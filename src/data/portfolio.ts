@@ -32,7 +32,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+60% improvement"
       }
     ],
-    liveUrl: "https://demo.vercel.store",
+    liveUrl: "https://vlccinstitute.com/",
     previewImage: "/portfolio/techstartup-preview.jpg",
     previewVideo: "/portfolio/techstartup-demo.mp4",
     gallery: [
@@ -96,7 +96,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+70% faster"
       }
     ],
-    liveUrl: "https://nextjs.org",
+    liveUrl: "https://httpbin.org/html",
     previewImage: "/portfolio/fashion-preview.jpg",
     previewVideo: "/portfolio/fashion-demo.mp4",
     gallery: [
@@ -160,7 +160,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+65% time saved"
       }
     ],
-    liveUrl: "https://vlccinstitute.com/",
+    liveUrl: "https://httpbin.org/status/200",
     previewImage: "/portfolio/healthcare-preview.jpg",
     previewVideo: "/portfolio/healthcare-demo.mp4",
     gallery: [
@@ -224,7 +224,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+15% improvement"
       }
     ],
-    liveUrl: "https://github.com",
+    liveUrl: "https://httpbin.org/robots.txt",
     previewImage: "/portfolio/education-preview.jpg",
     previewVideo: "/portfolio/education-demo.mp4",
     gallery: [
@@ -288,7 +288,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "-60% reduction"
       }
     ],
-    liveUrl: "https://react.dev",
+    liveUrl: "https://httpbin.org/json",
     previewImage: "/portfolio/restaurant-preview.jpg",
     previewVideo: "/portfolio/restaurant-demo.mp4",
     gallery: [
@@ -352,7 +352,7 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+25% improvement"
       }
     ],
-    liveUrl: "https://www.framer.com",
+    liveUrl: "https://httpbin.org/xml",
     previewImage: "/portfolio/fintech-preview.jpg",
     previewVideo: "/portfolio/fintech-demo.mp4",
     gallery: [
