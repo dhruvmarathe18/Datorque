@@ -10,11 +10,9 @@ interface WebsitePreviewProps {
   url: string;
   title: string;
   description: string;
-  fallbackImage?: string;
-  isLive?: boolean;
 }
 
-export function WebsitePreview({ url, title, description, fallbackImage, isLive = true }: WebsitePreviewProps) {
+export function WebsitePreview({ url, title, description }: WebsitePreviewProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [retryCount, setRetryCount] = useState(0);
@@ -29,20 +27,6 @@ export function WebsitePreview({ url, title, description, fallbackImage, isLive 
     return `https://api.screenshotone.com/take?access_key=demo&url=${encodedUrl}&viewport_width=1200&viewport_height=800&device_scale_factor=1&format=png&image_quality=80&block_ads=true&block_cookie_banners=true&block_banners_by_heuristics=true&block_trackers=true&delay=2&timeout=10`;
   };
 
-  // Alternative screenshot services
-  const getAlternativeScreenshot = (url: string, service: 'screenshotapi' | 'htmlcsstoimage' | 'urlbox') => {
-    const encodedUrl = encodeURIComponent(url);
-    switch (service) {
-      case 'screenshotapi':
-        return `https://shot.screenshotapi.net/screenshot?token=demo&url=${encodedUrl}&width=1200&height=800&fresh=true&output=image&file_type=png`;
-      case 'htmlcsstoimage':
-        return `https://hcti.io/v1/image?url=${encodedUrl}&width=1200&height=800`;
-      case 'urlbox':
-        return `https://api.urlbox.io/v1/demo/png?url=${encodedUrl}&width=1200&height=800&device=desktop`;
-      default:
-        return getScreenshotUrl(url);
-    }
-  };
 
   const handleIframeLoad = () => {
     setLoading(false);
@@ -256,21 +240,10 @@ export function WebsitePreview({ url, title, description, fallbackImage, isLive 
 
             {showScreenshot && (
               <div className="absolute inset-0 bg-gray-100">
-                <img
-                  src={getScreenshotUrl(url)}
-                  alt={`Screenshot of ${title}`}
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    // Fallback to mock website
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const iframe = document.createElement('iframe');
-                    iframe.src = mockWebsiteDataUrl;
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100%';
-                    iframe.style.border = 'none';
-                    target.parentNode?.appendChild(iframe);
-                  }}
+                <iframe
+                  src={mockWebsiteDataUrl}
+                  className="w-full h-full border-0"
+                  title={`Mock preview of ${title}`}
                 />
               </div>
             )}

@@ -122,7 +122,6 @@ export function Portfolio() {
                       url={item.liveUrl}
                       title={item.title}
                       description={item.description}
-                      isLive={true}
                     />
                   </div>
 
@@ -277,7 +276,6 @@ export function Portfolio() {
                   url={portfolioItems.find(p => p.id === selectedProject)?.liveUrl || ''}
                   title={portfolioItems.find(p => p.id === selectedProject)?.title || ''}
                   description={portfolioItems.find(p => p.id === selectedProject)?.description || ''}
-                  isLive={true}
                 />
               </div>
             </motion.div>
