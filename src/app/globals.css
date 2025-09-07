@@ -1,26 +1,460 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B0F17;
+  --foreground: #E5E7EB;
+  --muted: #9CA3AF;
+  --surface: #111827;
+  --primary: #2D89EF;
+  --accent: #FACC15;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(45, 137, 239, 0.3);
+  color: var(--foreground);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Glass morphism utility classes */
+@layer components {
+  .glass {
+    @apply bg-surface-900/80 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-light {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 to-primary-700;
+  }
+
+  .gradient-accent {
+    @apply bg-gradient-to-r from-accent-400 to-accent-600;
+  }
+
+  .gradient-dark {
+    @apply bg-gradient-to-br from-dark-900 to-surface-800;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-glow;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Portfolio iframe styles */
+  .portfolio-iframe {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+  }
+
+  .portfolio-iframe:hover {
+    transform: scale(1.01);
+  }
+
+  /* Smooth iframe loading */
+  .iframe-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .iframe-loading {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(45, 137, 239, 0.1), rgba(250, 204, 21, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+  }
+
+  .iframe-loaded .iframe-loading {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Smooth modal animations */
+  .modal-backdrop {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Browser mockup styles */
+  .browser-mockup {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .browser-mockup:hover {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Hover effects for portfolio cards */
+  .portfolio-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portfolio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+    z-index: 1;
+  }
+
+  .portfolio-card:hover::before {
+    left: 100%;
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(45, 137, 239, 0.25);
+  }
+
+  /* Mobile touch optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Mobile-specific hover states */
+  @media (hover: hover) and (pointer: fine) {
+    .portfolio-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(45, 137, 239, 0.25);
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .portfolio-card:active {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 15px 30px rgba(45, 137, 239, 0.2);
+    }
+  }
+
+  /* Smooth iframe reveal animation */
+  .iframe-reveal {
+    animation: iframeReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes iframeReveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Enhanced hover overlay animation */
+  .hover-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 30%,
+      transparent 70%,
+      transparent 100%
+    );
+  }
+
+  .hover-content {
+    animation: slideUpFade 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes slideUpFade {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile-specific overlay improvements */
+  @media (hover: none) and (pointer: coarse) {
+    .hover-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        transparent 100%
+      );
+    }
+    
+    .hover-content {
+      animation: none;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile iframe optimizations */
+  @media (max-width: 640px) {
+    .portfolio-iframe {
+      transform: scale(1);
+    }
+    
+    .iframe-container {
+      overflow: hidden;
+    }
+    
+    /* Reduce motion on mobile for better performance */
+    .portfolio-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .hover-overlay {
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  /* Performance optimizations */
+  .portfolio-card {
+    will-change: transform, box-shadow;
+  }
+
+  .portfolio-iframe {
+    will-change: opacity, transform;
+  }
+
+  /* Smooth scrolling for mobile */
+  @media (max-width: 768px) {
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  /* Focus states for accessibility */
+  .portfolio-card:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .portfolio-card {
+      border: 2px solid var(--foreground);
+    }
+    
+    .hover-overlay {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  /* Crazy Animation Keyframes */
+  @keyframes crazyFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(-3deg);
+    }
+    75% {
+      transform: translateY(-30px) rotate(2deg);
+    }
+  }
+
+  @keyframes crazyPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes crazyGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(45, 137, 239, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(45, 137, 239, 0.8), 0 0 60px rgba(250, 204, 21, 0.4);
+    }
+  }
+
+  @keyframes crazyRotate {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes crazyShake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    75% {
+      transform: translateX(5px);
+    }
+  }
+
+  /* Apply crazy animations */
+  .crazy-float {
+    animation: crazyFloat 6s ease-in-out infinite;
+  }
+
+  .crazy-pulse {
+    animation: crazyPulse 2s ease-in-out infinite;
+  }
+
+  .crazy-glow {
+    animation: crazyGlow 3s ease-in-out infinite;
+  }
+
+  .crazy-rotate {
+    animation: crazyRotate 8s linear infinite;
+  }
+
+  .crazy-shake {
+    animation: crazyShake 0.5s ease-in-out infinite;
+  }
+
+  /* Subtle portfolio card animations */
+  .portfolio-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .portfolio-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(45, 137, 239, 0.25);
+  }
 }
