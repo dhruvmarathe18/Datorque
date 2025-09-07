@@ -4,7 +4,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { featuredTestimonials, testimonialStats } from "@/data/testimonials";
 import { cn } from "@/lib/utils";
@@ -36,7 +36,7 @@ export function Testimonials() {
             What Our <span className="text-gradient">Clients Say</span>
           </h2>
           <p className="text-xl text-text-muted max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about working with us.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
           </p>
         </motion.div>
 
@@ -104,7 +104,7 @@ export function Testimonials() {
 
                   {/* Testimonial Text */}
                   <blockquote className="text-lg lg:text-xl text-text-primary leading-relaxed">
-                    "{featuredTestimonials[currentIndex].content}"
+                    &ldquo;{featuredTestimonials[currentIndex].content}&rdquo;
                   </blockquote>
 
                   {/* Client Info */}
@@ -182,7 +182,7 @@ export function Testimonials() {
               Ready to join our success stories?
             </h3>
             <p className="text-text-muted mb-6">
-              Let's discuss how we can help your business achieve similar results.
+              Let&apos;s discuss how we can help your business achieve similar results.
             </p>
             <Button size="lg" variant="gradient">
               Start Your Project

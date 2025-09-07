@@ -112,7 +112,7 @@ export function WebsiteAudit() {
           </h2>
           
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Discover what's holding your website back. Get instant insights on performance, SEO, accessibility, and more.
+            Discover what&apos;s holding your website back. Get instant insights on performance, SEO, accessibility, and more.
           </p>
         </motion.div>
 
@@ -182,8 +182,8 @@ export function WebsiteAudit() {
                 </div>
                 <p className="text-lg text-gray-300 mb-6">
                   {result.score >= 90 ? "Excellent! Your website is performing great." :
-                   result.score >= 70 ? "Good! There's room for improvement." :
-                   "Needs work. Let's optimize your website."}
+                   result.score >= 70 ? "Good! There&apos;s room for improvement." :
+                   "Needs work. Let&apos;s optimize your website."}
                 </p>
               </div>
             </Card>
@@ -252,7 +252,7 @@ export function WebsiteAudit() {
               <div className="mt-8 pt-6 border-t border-white/10">
                 <div className="text-center">
                   <p className="text-gray-300 mb-4">
-                    Ready to fix these issues and boost your website's performance?
+                    Ready to fix these issues and boost your website&apos;s performance?
                   </p>
                   <Button 
                     className="bg-gradient-to-r from-primary-500 to-primary-700 hover:from-primary-600 hover:to-primary-800 text-white px-8"

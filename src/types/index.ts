@@ -230,9 +230,9 @@ export interface SectionProps extends BaseComponentProps {
 
 // Animation variants
 export interface AnimationVariants {
-  hidden: any;
-  visible: any;
-  exit?: any;
+  hidden: Record<string, unknown>;
+  visible: Record<string, unknown>;
+  exit?: Record<string, unknown>;
 }
 
 // Marquee types

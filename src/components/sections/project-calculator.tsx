@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calculator, Plus, Minus, CheckCircle, ArrowRight } from "lucide-react";
+import { Calculator, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { QuizModal } from "@/components/ui/quiz-modal";

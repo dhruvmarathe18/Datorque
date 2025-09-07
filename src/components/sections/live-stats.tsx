@@ -9,7 +9,7 @@ interface Stat {
   id: string;
   value: number;
   label: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
   suffix?: string;
   prefix?: string;
 }
@@ -101,7 +101,7 @@ export function LiveStats() {
             Our <span className="text-gradient bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 bg-clip-text text-transparent">Impact</span> in Numbers
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Real results, real clients, real impact. Here's what we've achieved together.
+            Real results, real clients, real impact. Here&apos;s what we&apos;ve achieved together.
           </p>
         </motion.div>
 

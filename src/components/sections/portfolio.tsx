@@ -3,7 +3,7 @@
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { ExternalLink, Eye, Star, TrendingUp, Clock, Users, Play, X, Maximize2, Minimize2 } from "lucide-react";
+import { ExternalLink, Eye, X, Maximize2, Minimize2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { portfolioItems } from "@/data/portfolio";

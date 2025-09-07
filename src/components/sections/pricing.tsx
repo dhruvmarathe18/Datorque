@@ -214,7 +214,7 @@ export function Pricing() {
               Need a custom solution?
             </h3>
             <p className="text-text-muted mb-6">
-              We offer custom pricing for enterprise clients and unique requirements. Let's discuss your project.
+              We offer custom pricing for enterprise clients and unique requirements. Let&apos;s discuss your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="gradient">

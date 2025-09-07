@@ -7,7 +7,6 @@ import { Globe, ShoppingCart, Target, Zap, Palette, Shield, ArrowRight } from "l
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/services";
-import { cn } from "@/lib/utils";
 
 const serviceIcons = {
   "business-websites": Globe,

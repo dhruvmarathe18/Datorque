@@ -7,7 +7,7 @@ export default function ContactPage() {
             Get In <span className="text-gradient bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 bg-clip-text text-transparent">Touch</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to fuel your digital momentum? Let's discuss your project and bring your vision to life.
+            Ready to fuel your digital momentum? Let&apos;s discuss your project and bring your vision to life.
           </p>
         </div>
         

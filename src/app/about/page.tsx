@@ -9,7 +9,7 @@ export default function AboutPage() {
             About <span className="text-gradient bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 bg-clip-text text-transparent">Datorque</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-12">
-            We're a team of passionate developers and designers creating exceptional digital experiences for Indian businesses.
+            We&apos;re a team of passionate developers and designers creating exceptional digital experiences for Indian businesses.
           </p>
         </div>
       </div>

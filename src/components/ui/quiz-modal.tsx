@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, CheckCircle, Download, Mail, Phone } from "lucide-react";
 import { Button } from "./button";
@@ -11,16 +11,16 @@ import { Textarea } from "./textarea";
 interface QuizQuestion {
   id: string;
   question: string;
-  type: 'single' | 'multiple' | 'text' | 'range' | 'select';
+  type: 'single' | 'multiple' | 'text' | 'textarea' | 'range' | 'select';
   options?: string[];
   required: boolean;
   category: string;
 }
 
-interface QuizResponse {
-  questionId: string;
-  answer: string | string[] | number;
-}
+// interface QuizResponse {
+//   questionId: string;
+//   answer: string | string[] | number;
+// }
 
 const quizQuestions: QuizQuestion[] = [
   // Business Information
@@ -162,14 +162,27 @@ interface QuizModalProps {
 
 export function QuizModal({ isOpen, onClose }: QuizModalProps) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [responses, setResponses] = useState<Record<string, any>>({});
+  const [responses, setResponses] = useState<Record<string, string | string[] | number>>({});
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedReport, setGeneratedReport] = useState<any>(null);
+  const [generatedReport, setGeneratedReport] = useState<{
+    businessName: string;
+    businessType: string;
+    primaryGoal: string;
+    budgetRange: string;
+    timeline: string;
+    recommendedPackage: string;
+    estimatedPrice: number;
+    recommendations: string[];
+    requiredFeatures: string[];
+    designPreferences: string;
+    websiteIssues: string[];
+    generatedAt: string;
+  } | null>(null);
 
   const currentQuestion = quizQuestions[currentStep];
   const progress = ((currentStep + 1) / quizQuestions.length) * 100;
 
-  const handleAnswer = (questionId: string, answer: any) => {
+  const handleAnswer = (questionId: string, answer: string | string[] | number) => {
     setResponses(prev => ({
       ...prev,
       [questionId]: answer
@@ -205,15 +218,15 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
     setIsGenerating(false);
   };
 
-  const generatePersonalizedReport = (responses: Record<string, any>) => {
-    const businessName = responses["business-name"] || "Your Business";
-    const businessType = responses["business-type"] || "Business";
-    const primaryGoal = responses["primary-goal"] || "Generate leads";
-    const budgetRange = responses["budget-range"] || "₹25,000 - ₹50,000";
-    const timeline = responses["timeline"] || "Within 1 month";
-    const requiredFeatures = responses["required-features"] || [];
-    const designPreferences = responses["design-preferences"] || "Modern & Minimal";
-    const websiteIssues = responses["website-issues"] || [];
+  const generatePersonalizedReport = (responses: Record<string, string | string[] | number>) => {
+    const businessName = String(responses["business-name"] || "Your Business");
+    const businessType = String(responses["business-type"] || "Business");
+    const primaryGoal = String(responses["primary-goal"] || "Generate leads");
+    const budgetRange = String(responses["budget-range"] || "₹25,000 - ₹50,000");
+    const timeline = String(responses["timeline"] || "Within 1 month");
+    const requiredFeatures = Array.isArray(responses["required-features"]) ? responses["required-features"] as string[] : [];
+    const designPreferences = String(responses["design-preferences"] || "Modern & Minimal");
+    const websiteIssues = Array.isArray(responses["website-issues"]) ? responses["website-issues"] as string[] : [];
 
     // Calculate recommended package
     let recommendedPackage = "Starter";
@@ -259,6 +272,8 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
   };
 
   const downloadPDF = () => {
+    if (!generatedReport) return;
+    
     // In a real implementation, this would generate and download a PDF
     const element = document.createElement('a');
     const file = new Blob([`Personalized Report for ${generatedReport.businessName}`], {type: 'text/plain'});
@@ -270,9 +285,11 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
   };
 
   const sendEmail = () => {
+    if (!generatedReport) return;
+    
     const subject = `Personalized Website Report - ${generatedReport.businessName}`;
-    const body = `Hi ${generatedReport.contactName},\n\nThank you for completing our quiz! Your personalized report is ready.\n\nBest regards,\nDatorque Team`;
-    window.open(`mailto:${responses["contact-email"]}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+    const body = `Hi ${String(responses["contact-name"] || "there")},\n\nThank you for completing our quiz! Your personalized report is ready.\n\nBest regards,\nDatorque Team`;
+    window.open(`mailto:${String(responses["contact-email"] || "")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
   };
 
   if (!isOpen) return null;
@@ -459,9 +476,9 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
                         <label key={option} className="flex items-center space-x-3 p-4 rounded-lg border border-white/10 bg-surface-800/50 hover:border-primary/30 transition-all duration-200 cursor-pointer">
                           <input
                             type="checkbox"
-                            checked={(responses[currentQuestion.id] || []).includes(option)}
+                            checked={Array.isArray(responses[currentQuestion.id]) ? (responses[currentQuestion.id] as string[]).includes(option) : false}
                             onChange={(e) => {
-                              const current = responses[currentQuestion.id] || [];
+                              const current = Array.isArray(responses[currentQuestion.id]) ? responses[currentQuestion.id] as string[] : [];
                               const updated = e.target.checked
                                 ? [...current, option]
                                 : current.filter((item: string) => item !== option);
