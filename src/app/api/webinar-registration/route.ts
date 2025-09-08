@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { excelManager, WebinarRegistration } from '@/lib/excel-utils';
-import { jsonStorageManager } from '@/lib/json-storage';
+import { edgeConfigStorageManager, WebinarRegistration } from '@/lib/edge-config-storage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,34 +44,17 @@ export async function POST(request: NextRequest) {
       source: 'webinar-landing-page'
     };
 
-    let newRegistration: WebinarRegistration;
-    let totalRegistrations: number;
-
-    try {
-      // Try Excel storage first
-      if (excelManager.emailExists(email)) {
-        return NextResponse.json(
-          { error: 'This email is already registered for the webinar' },
-          { status: 409 }
-        );
-      }
-
-      newRegistration = excelManager.addRegistration(registration);
-      totalRegistrations = excelManager.getRegistrationCount();
-    } catch (error) {
-      console.error('Excel storage failed, falling back to JSON:', error);
-      
-      // Fallback to JSON storage
-      if (jsonStorageManager.emailExists(email)) {
-        return NextResponse.json(
-          { error: 'This email is already registered for the webinar' },
-          { status: 409 }
-        );
-      }
-
-      newRegistration = jsonStorageManager.addRegistration(registration);
-      totalRegistrations = jsonStorageManager.getRegistrationCount();
+    // Check if email already exists
+    if (await edgeConfigStorageManager.emailExists(email)) {
+      return NextResponse.json(
+        { error: 'This email is already registered for the webinar' },
+        { status: 409 }
+      );
     }
+
+    // Add registration using Edge Config storage
+    const newRegistration = await edgeConfigStorageManager.addRegistration(registration);
+    const totalRegistrations = await edgeConfigStorageManager.getRegistrationCount();
 
     console.log('New webinar registration:', newRegistration);
     console.log('Total registrations:', totalRegistrations);
@@ -101,16 +83,7 @@ export async function POST(request: NextRequest) {
 // Get registration statistics
 export async function GET() {
   try {
-    let stats;
-    
-    try {
-      // Try Excel storage first
-      stats = excelManager.getStatistics();
-    } catch (error) {
-      console.error('Excel storage failed, falling back to JSON:', error);
-      // Fallback to JSON storage
-      stats = jsonStorageManager.getStatistics();
-    }
+    const stats = await edgeConfigStorageManager.getStatistics();
     
     return NextResponse.json({
       success: true,
