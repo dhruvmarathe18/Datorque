@@ -10,7 +10,7 @@ export function ChatWidget() {
   const [message, setMessage] = useState("");
 
   const handleWhatsApp = () => {
-    const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+    const phoneNumber = "918861598453"; // WhatsApp number for leads
     const text = message || "Hi! I'm interested in your web development services.";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");
@@ -127,7 +127,7 @@ export function ChatWidget() {
                   </Button>
                   
                   <Button
-                    onClick={() => window.open("tel:+919876543210", "_self")}
+                    onClick={() => window.open("tel:+918861598453", "_self")}
                     variant="outline"
                     size="sm"
                     className="border-green-500/30 text-green-400 hover:bg-green-500/10"

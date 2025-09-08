@@ -415,7 +415,7 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
                     Email Report
                   </Button>
                   <Button
-                    onClick={() => window.open('https://wa.me/919876543210?text=Hi! I completed the quiz and would like to discuss my personalized report.', '_blank')}
+                    onClick={() => window.open('https://wa.me/918861598453?text=Hi! I completed the quiz and would like to discuss my personalized report.', '_blank')}
                     variant="outline"
                     className="flex-1 border-green-500/30 text-green-400 hover:bg-green-500/10"
                   >

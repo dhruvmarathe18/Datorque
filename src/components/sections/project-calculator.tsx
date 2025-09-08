@@ -237,7 +237,7 @@ export function ProjectCalculator() {
                   variant="outline" 
                   className="w-full border-primary/30 text-primary hover:bg-primary/10"
                   onClick={() => {
-                    window.open('https://wa.me/919876543210?text=Hi! I\'d like to schedule a consultation for my web development project.', '_blank');
+                    window.open('https://wa.me/918861598453?text=Hi! I\'d like to schedule a consultation for my web development project.', '_blank');
                   }}
                 >
                   Schedule Consultation
