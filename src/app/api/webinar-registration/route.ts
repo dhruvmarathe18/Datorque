@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { edgeConfigStorageManager, WebinarRegistration } from '@/lib/edge-config-storage';
+import { persistentStorageManager, WebinarRegistration } from '@/lib/persistent-storage';
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,16 +45,16 @@ export async function POST(request: NextRequest) {
     };
 
     // Check if email already exists
-    if (await edgeConfigStorageManager.emailExists(email)) {
+    if (await persistentStorageManager.emailExists(email)) {
       return NextResponse.json(
         { error: 'This email is already registered for the webinar' },
         { status: 409 }
       );
     }
 
-    // Add registration using Edge Config storage
-    const newRegistration = await edgeConfigStorageManager.addRegistration(registration);
-    const totalRegistrations = await edgeConfigStorageManager.getRegistrationCount();
+    // Add registration using persistent storage
+    const newRegistration = await persistentStorageManager.addRegistration(registration);
+    const totalRegistrations = await persistentStorageManager.getRegistrationCount();
 
     console.log('New webinar registration:', newRegistration);
     console.log('Total registrations:', totalRegistrations);
@@ -83,11 +83,14 @@ export async function POST(request: NextRequest) {
 // Get registration statistics
 export async function GET() {
   try {
-    const stats = await edgeConfigStorageManager.getStatistics();
+    const stats = await persistentStorageManager.getStatistics();
     
     return NextResponse.json({
       success: true,
-      data: stats
+      data: {
+        ...stats,
+        storageType: 'Persistent Storage (Cross-Session)'
+      }
     });
   } catch (error) {
     console.error('Error fetching registration stats:', error);
