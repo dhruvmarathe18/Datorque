@@ -6,6 +6,7 @@ import { useInView } from "framer-motion";
 import { ExternalLink, Eye, X, Maximize2, Minimize2 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { VideoPreview } from "@/components/ui/video-preview";
 import { portfolioItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -111,95 +112,111 @@ export function Portfolio() {
                   }
                 }}
               >
-                {/* Live Website Preview */}
+                {/* Preview - Video or Live Website */}
                 <div className="relative h-64 sm:h-72 lg:h-80 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/10 overflow-hidden">
                   {/* Animated Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-accent-500/5 animate-pulse"></div>
-                  {/* Browser Mockup */}
-                  <div className="absolute inset-0 bg-white rounded-t-2xl overflow-hidden browser-mockup shadow-2xl group-hover:shadow-3xl transition-shadow duration-500">
-                    <div className="h-6 sm:h-8 bg-gray-100 flex items-center px-2 sm:px-4 space-x-1 sm:space-x-2">
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full"></div>
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full"></div>
-                      <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full"></div>
-                      <div className="flex-1 bg-gray-200 rounded px-2 sm:px-3 py-0.5 sm:py-1 mx-2 sm:mx-4">
-                        <div className="text-xs sm:text-xs text-gray-500 truncate">{item.liveUrl}</div>
+                  
+                  {/* Video Preview */}
+                  {item.previewVideo ? (
+                    <VideoPreview
+                      src={item.previewVideo}
+                      poster={item.previewImage}
+                      title={`${item.title} Preview`}
+                      className="h-full w-full"
+                      autoPlay={true}
+                      muted={true}
+                      loop={true}
+                      controls={false}
+                      playOnView={true}
+                    />
+                  ) : (
+                    /* Live Website Preview */
+                    <div className="absolute inset-0 bg-white rounded-t-2xl overflow-hidden browser-mockup shadow-2xl group-hover:shadow-3xl transition-shadow duration-500">
+                      <div className="h-6 sm:h-8 bg-gray-100 flex items-center px-2 sm:px-4 space-x-1 sm:space-x-2">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-400 rounded-full"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-400 rounded-full"></div>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full"></div>
+                        <div className="flex-1 bg-gray-200 rounded px-2 sm:px-3 py-0.5 sm:py-1 mx-2 sm:mx-4">
+                          <div className="text-xs sm:text-xs text-gray-500 truncate">{item.liveUrl}</div>
+                        </div>
+                      </div>
+                      
+                      {/* Live Website Iframe */}
+                      <div className={cn(
+                        "h-[calc(100%-1.5rem)] sm:h-[calc(100%-2rem)] relative overflow-hidden iframe-container",
+                        loadedIframes.has(item.id) && "iframe-loaded"
+                      )}>
+                        <iframe
+                          src={item.liveUrl}
+                          className="portfolio-iframe w-full h-full border-0"
+                          title={`${item.title} Live Preview`}
+                          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
+                          loading="lazy"
+                          onLoad={() => handleIframeLoad(item.id)}
+                          onError={() => handleIframeError(item.id)}
+                          style={{
+                            opacity: loadedIframes.has(item.id) ? '1' : '0',
+                            transform: loadedIframes.has(item.id) ? 'translateY(0)' : 'translateY(20px)',
+                            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                          }}
+                          referrerPolicy="no-referrer-when-downgrade"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        />
+                        
+                        {/* Loading State */}
+                        {!loadedIframes.has(item.id) && !blockedIframes.has(item.id) && (
+                          <div className="iframe-loading">
+                            <div className="text-center">
+                              <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3 mx-auto"></div>
+                              <p className="text-sm text-primary font-medium">Loading live site...</p>
+                              <div className="mt-2 w-32 h-1 bg-primary/20 rounded-full overflow-hidden">
+                                <div className="h-full bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Blocked/CORS Error State */}
+                        {blockedIframes.has(item.id) && (
+                          <div className="iframe-loading">
+                            <div className="text-center">
+                              <div className="w-16 h-16 bg-warning/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                                <ExternalLink className="w-8 h-8 text-warning" />
+                              </div>
+                              <p className="text-sm text-warning font-medium mb-2">Preview not available</p>
+                              <p className="text-xs text-text-muted mb-4">This site blocks iframe embedding</p>
+                              <Button 
+                                size="sm" 
+                                variant="outline"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  window.open(item.liveUrl, '_blank');
+                                }}
+                                className="text-xs"
+                              >
+                                <ExternalLink className="w-3 h-3 mr-1" />
+                                View Live Site
+                              </Button>
+                            </div>
+                          </div>
+                        )}
+                        
+                        {/* Hover Overlay - Top to Bottom Animation */}
+                        {loadedIframes.has(item.id) && (
+                          <div className="absolute inset-0 hover-overlay opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-end justify-center pb-6">
+                            <div className="text-center hover-content transform translate-y-6 group-hover:translate-y-0 transition-all duration-700 ease-out">
+                              <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <Eye className="w-7 h-7 text-white" />
+                              </div>
+                              <p className="text-white font-semibold text-sm">Click to view fullscreen</p>
+                              <p className="text-white/80 text-xs mt-1">Experience the full website</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-                    
-                    {/* Live Website Iframe */}
-                    <div className={cn(
-                      "h-[calc(100%-1.5rem)] sm:h-[calc(100%-2rem)] relative overflow-hidden iframe-container",
-                      loadedIframes.has(item.id) && "iframe-loaded"
-                    )}>
-                      <iframe
-                        src={item.liveUrl}
-                        className="portfolio-iframe w-full h-full border-0"
-                        title={`${item.title} Live Preview`}
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"
-                        loading="lazy"
-                        onLoad={() => handleIframeLoad(item.id)}
-                        onError={() => handleIframeError(item.id)}
-                        style={{
-                          opacity: loadedIframes.has(item.id) ? '1' : '0',
-                          transform: loadedIframes.has(item.id) ? 'translateY(0)' : 'translateY(20px)',
-                          transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        referrerPolicy="no-referrer-when-downgrade"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      />
-                      
-                      {/* Loading State */}
-                      {!loadedIframes.has(item.id) && !blockedIframes.has(item.id) && (
-                        <div className="iframe-loading">
-                          <div className="text-center">
-                            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3 mx-auto"></div>
-                            <p className="text-sm text-primary font-medium">Loading live site...</p>
-                            <div className="mt-2 w-32 h-1 bg-primary/20 rounded-full overflow-hidden">
-                              <div className="h-full bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Blocked/CORS Error State */}
-                      {blockedIframes.has(item.id) && (
-                        <div className="iframe-loading">
-                          <div className="text-center">
-                            <div className="w-16 h-16 bg-warning/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                              <ExternalLink className="w-8 h-8 text-warning" />
-                            </div>
-                            <p className="text-sm text-warning font-medium mb-2">Preview not available</p>
-                            <p className="text-xs text-text-muted mb-4">This site blocks iframe embedding</p>
-                            <Button 
-                              size="sm" 
-                              variant="outline"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                window.open(item.liveUrl, '_blank');
-                              }}
-                              className="text-xs"
-                            >
-                              <ExternalLink className="w-3 h-3 mr-1" />
-                              View Live Site
-                            </Button>
-                          </div>
-                        </div>
-                      )}
-                      
-                      {/* Hover Overlay - Top to Bottom Animation */}
-                      {loadedIframes.has(item.id) && (
-                        <div className="absolute inset-0 hover-overlay opacity-0 group-hover:opacity-100 transition-all duration-700 flex items-end justify-center pb-6">
-                          <div className="text-center hover-content transform translate-y-6 group-hover:translate-y-0 transition-all duration-700 ease-out">
-                            <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-3 mx-auto shadow-lg group-hover:scale-110 transition-transform duration-300">
-                              <Eye className="w-7 h-7 text-white" />
-                            </div>
-                            <p className="text-white font-semibold text-sm">Click to view fullscreen</p>
-                            <p className="text-white/80 text-xs mt-1">Experience the full website</p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  )}
 
                   {/* Project Tags */}
                   <div className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20">

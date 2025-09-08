@@ -87,7 +87,7 @@ export function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm text-text-muted">
                   <Mail className="w-4 h-4 text-primary" />
-                  <span>hello@datorque.com</span>
+                  <span>datorque.global@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-text-muted">
                   <Phone className="w-4 h-4 text-primary" />

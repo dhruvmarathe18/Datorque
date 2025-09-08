@@ -3,7 +3,7 @@ import { PortfolioItem } from "@/types";
 export const portfolioItems: PortfolioItem[] = [
   {
     id: "techstartup-saas",
-    title: "TechStartup SaaS Platform",
+    title: "Bangalore Real Estate Co",
     client: "TechStartup",
     industry: "SaaS",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Vercel"],
@@ -32,9 +32,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+60% improvement"
       }
     ],
-    liveUrl: "https://vlccinstitute.com/",
+    liveUrl: "https://www.blrrealestate.com/",
     previewImage: "/portfolio/techstartup-preview.jpg",
-    previewVideo: "/portfolio/techstartup-demo.mp4",
+    previewVideo: "/v1.mp4",
     gallery: [
       "/portfolio/techstartup-1.jpg",
       "/portfolio/techstartup-2.jpg",

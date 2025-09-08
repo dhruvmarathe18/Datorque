@@ -134,17 +134,17 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-text-muted rounded-full flex justify-center"
+          className="w-8 h-12 sm:w-6 sm:h-10 border-2 border-text-muted rounded-full flex justify-center bg-surface-900/50 backdrop-blur-sm"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-text-muted rounded-full mt-2"
+            className="w-1.5 h-4 sm:w-1 sm:h-3 bg-text-muted rounded-full mt-2"
           />
         </motion.div>
       </motion.div>

@@ -23,7 +23,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-white font-medium">Email</p>
-                  <p className="text-gray-300">hello@datorque.com</p>
+                  <p className="text-gray-300">datorque.global@gmail.com</p>
                 </div>
               </div>
               
