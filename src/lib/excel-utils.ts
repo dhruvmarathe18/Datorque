@@ -90,13 +90,13 @@ class ExcelManager {
         const row = data[i] as unknown[];
         if (row && row.length >= 6) {
           registrations.push({
-            registrationNumber: row[0],
-            name: row[1] || '',
-            email: row[2] || '',
-            phone: row[3] || '',
-            college: row[4] || '',
-            timestamp: row[5] || '',
-            source: row[6] || ''
+            registrationNumber: Number(row[0]) || 0,
+            name: String(row[1] || ''),
+            email: String(row[2] || ''),
+            phone: String(row[3] || ''),
+            college: String(row[4] || ''),
+            timestamp: String(row[5] || ''),
+            source: String(row[6] || '')
           });
         }
       }
