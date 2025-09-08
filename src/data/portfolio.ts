@@ -4,7 +4,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: "techstartup-saas",
     title: "Bangalore Real Estate Co",
-    client: "TechStartup",
+    client: "Real Estate Category",
     industry: "SaaS",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Vercel"],
     description: "A comprehensive SaaS platform for project management with real-time collaboration features, advanced analytics, and seamless user experience.",
@@ -67,11 +67,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "fashion-ecommerce",
-    title: "Fashion Forward eCommerce",
-    client: "Fashion Forward",
+    title: "Revive - The Elite Fitness",
+    client: "Fitness Category",
     industry: "Fashion",
     stack: ["Shopify", "Liquid", "JavaScript", "CSS3", "Shopify Apps"],
-    description: "A stunning eCommerce website for a premium fashion brand with advanced product filtering, AR try-on features, and seamless checkout experience.",
+    description: "The Elite Fitness Club — designed to reflect strength, luxury, and motivation. With a sleek dark theme, bold typography, and dynamic visuals, the website captures the energy of fitness while providing an effortless user experience",
     problem: "Fashion Forward's existing website had poor mobile experience, slow loading times, and low conversion rates. They needed a modern, mobile-first solution that could showcase their products effectively.",
     solution: "We created a beautiful, mobile-first eCommerce experience with advanced product filtering, AR try-on features, and optimized checkout flow that increased conversions significantly.",
     results: [
@@ -96,9 +96,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+70% faster"
       }
     ],
-    liveUrl: "https://httpbin.org/html",
+    liveUrl: "https://www.reviveblr.com/",
     previewImage: "/portfolio/fashion-preview.jpg",
-    previewVideo: "/portfolio/fashion-demo.mp4",
+    previewVideo: "/v2.mp4",
     gallery: [
       "/portfolio/fashion-1.jpg",
       "/portfolio/fashion-2.jpg",
@@ -131,11 +131,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "healthcare-portal",
-    title: "MediCare Patient Portal",
-    client: "MediCare Hospital",
+    title: "Dubai Beauty School",
+    client: "Beauty Category",
     industry: "Healthcare",
     stack: ["React", "Node.js", "MongoDB", "Express", "JWT", "AWS"],
-    description: "A comprehensive patient portal with appointment booking, medical records access, telemedicine features, and secure communication with healthcare providers.",
+    description: "Datorque created a sophisticated and elegant website for The Beauty Academy — the ultimate destination for aspiring beauty professionals. Designed with a clean pastel theme, graceful typography, and smooth animations, the website reflects glamour and trust",
     problem: "MediCare needed a secure, user-friendly patient portal that could handle sensitive medical data while providing an excellent user experience for patients of all ages.",
     solution: "We built a HIPAA-compliant patient portal with intuitive design, secure data handling, and features that make healthcare management easy for patients and providers.",
     results: [
@@ -160,9 +160,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+65% time saved"
       }
     ],
-    liveUrl: "https://httpbin.org/status/200",
+    liveUrl: "https://dubaibeautyschool.com/",
     previewImage: "/portfolio/healthcare-preview.jpg",
-    previewVideo: "/portfolio/healthcare-demo.mp4",
+    previewVideo: "/v3.mp4",
     gallery: [
       "/portfolio/healthcare-1.jpg",
       "/portfolio/healthcare-2.jpg",
@@ -195,11 +195,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "education-platform",
-    title: "EduLearn Online Academy",
-    client: "EduLearn Academy",
+    title: "Oakridge International School",
+    client: "Educational Category",
     industry: "Education",
     stack: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL", "Vercel"],
-    description: "A comprehensive online learning platform with video streaming, interactive quizzes, progress tracking, and certificate generation for students and instructors.",
+    description: "All-In-One platform for quality education. With a clean academic theme, structured layouts, and interactive elements, the website ensures easy access to courses, admissions, events, and resources.",
     problem: "EduLearn needed a modern, scalable platform to deliver online courses effectively. Their existing solution was outdated and couldn't handle the growing number of students and courses.",
     solution: "We built a modern learning management system with video streaming, interactive features, progress tracking, and a beautiful interface that engages students and instructors.",
     results: [
@@ -224,9 +224,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+15% improvement"
       }
     ],
-    liveUrl: "https://httpbin.org/robots.txt",
+    liveUrl: "https://www.oakridge.in/bengaluru/",
     previewImage: "/portfolio/education-preview.jpg",
-    previewVideo: "/portfolio/education-demo.mp4",
+    previewVideo: "/v4.mp4",
     gallery: [
       "/portfolio/education-1.jpg",
       "/portfolio/education-2.jpg",
@@ -259,8 +259,8 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "restaurant-booking",
-    title: "TasteBuds Restaurant Booking",
-    client: "TasteBuds Restaurant",
+    title: "The Table - Restaurant",
+    client: "Hospitality - Category",
     industry: "Hospitality",
     stack: ["React", "Node.js", "MongoDB", "Stripe", "Twilio", "AWS"],
     description: "A modern restaurant booking and management system with table reservations, online ordering, payment processing, and customer management features.",
@@ -288,9 +288,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "-60% reduction"
       }
     ],
-    liveUrl: "https://httpbin.org/json",
+    liveUrl: "https://foodmatters.in/the-table/",
     previewImage: "/portfolio/restaurant-preview.jpg",
-    previewVideo: "/portfolio/restaurant-demo.mp4",
+    previewVideo: "/v5.mp4",
     gallery: [
       "/portfolio/restaurant-1.jpg",
       "/portfolio/restaurant-2.jpg",
@@ -323,11 +323,11 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     id: "fintech-dashboard",
-    title: "WealthWise Financial Dashboard",
-    client: "WealthWise Financial",
+    title: "Planet Entertainment",
+    client: "Events Category",
     industry: "Fintech",
     stack: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL", "AWS"],
-    description: "A sophisticated financial dashboard for wealth management with real-time portfolio tracking, investment analytics, and comprehensive reporting features.",
+    description: "Datorque built a vibrant and dynamic website for The Event Masters — your one-stop destination for unforgettable celebrations. With a bold, festive design, immersive visuals, and smooth animations, the website captures the excitement of weddings, corporate events, and luxury parties.",
     problem: "WealthWise needed a secure, intuitive platform for their clients to track investments and manage portfolios. The existing solution was complex and difficult to use.",
     solution: "We built a modern financial dashboard with real-time data visualization, intuitive portfolio management, and comprehensive analytics that makes complex financial data accessible.",
     results: [
@@ -352,9 +352,9 @@ export const portfolioItems: PortfolioItem[] = [
         improvement: "+25% improvement"
       }
     ],
-    liveUrl: "https://httpbin.org/xml",
+    liveUrl: "https://www.truppandfest.com/",
     previewImage: "/portfolio/fintech-preview.jpg",
-    previewVideo: "/portfolio/fintech-demo.mp4",
+    previewVideo: "/v6.mp4",
     gallery: [
       "/portfolio/fintech-1.jpg",
       "/portfolio/fintech-2.jpg",

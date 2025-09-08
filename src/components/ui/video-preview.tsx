@@ -39,7 +39,9 @@ export function VideoPreview({
   const [hasError, setHasError] = React.useState(false);
   const [loadTimeout, setLoadTimeout] = React.useState<NodeJS.Timeout | null>(null);
   const [retryCount, setRetryCount] = React.useState(0);
-  const maxRetries = 3;
+  const [loadingStrategy, setLoadingStrategy] = React.useState<'initial' | 'retry' | 'fallback'>('initial');
+  const maxRetries = 5;
+  const [videoSrc, setVideoSrc] = React.useState(src);
   
   // Use intersection observer to detect when video comes into view
   const isInView = useInView(containerRef, { 
@@ -96,12 +98,13 @@ export function VideoPreview({
   };
 
   const handleVideoLoad = async () => {
-    console.log('Video loaded:', { src, title });
+    console.log('Video loaded successfully:', { src, title, loadingStrategy });
     if (loadTimeout) {
       clearTimeout(loadTimeout);
       setLoadTimeout(null);
     }
     setIsLoaded(true);
+    setHasError(false);
     // Don't auto-play here, let the intersection observer handle it
   };
 
@@ -120,37 +123,44 @@ export function VideoPreview({
     }
   };
 
-  // Set up load timeout
+  // Initialize video loading with timeout
   React.useEffect(() => {
-    if (!isLoaded && !hasError && retryCount === 0) {
-      const timeout = setTimeout(() => {
-        console.log('Video load timeout:', { src, title, retryCount });
-        if (retryCount < maxRetries) {
-          setRetryCount(prev => prev + 1);
-          // Retry loading
-          if (videoRef.current) {
-            const currentSrc = videoRef.current.src;
-            videoRef.current.src = '';
-            setTimeout(() => {
-              if (videoRef.current) {
-                videoRef.current.src = currentSrc;
-              }
-            }, 500);
-          }
-        } else {
-          setHasError(true);
-          setIsLoaded(true);
+    if (!videoRef.current || isLoaded || hasError) return;
+    
+    console.log('Initializing video load:', { src, title });
+    
+    // Set up timeout for loading
+    const timeout = setTimeout(() => {
+      console.log('Video load timeout:', { src, title, retryCount });
+      if (retryCount < maxRetries) {
+        setRetryCount(prev => prev + 1);
+        setLoadingStrategy('retry');
+        // Force reload
+        if (videoRef.current) {
+          videoRef.current.load();
         }
-      }, 8000); // 8 second timeout
-      
-      setLoadTimeout(timeout);
-      
-      return () => {
-        clearTimeout(timeout);
-        setLoadTimeout(null);
-      };
-    }
-  }, [isLoaded, hasError, src, title, retryCount, maxRetries]);
+      } else {
+        setLoadingStrategy('fallback');
+        setHasError(true);
+        setIsLoaded(true);
+      }
+    }, 8000);
+    
+    setLoadTimeout(timeout);
+    
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [src, title, isLoaded, hasError, retryCount, maxRetries]);
+
+  // Reset state when src changes
+  React.useEffect(() => {
+    setVideoSrc(src);
+    setIsLoaded(false);
+    setHasError(false);
+    setRetryCount(0);
+    setLoadingStrategy('initial');
+  }, [src]);
 
   // Auto-play when in view with performance optimization
   React.useEffect(() => {
@@ -205,35 +215,40 @@ export function VideoPreview({
     >
       <video
         ref={videoRef}
-        src={src}
+        src={videoSrc}
         poster={poster}
         muted={isMuted}
         loop={loop}
         playsInline
-        preload="metadata"
+        preload="auto"
         crossOrigin="anonymous"
         onLoadedData={handleVideoLoad}
         onCanPlay={() => {
-          console.log('Video can play:', { src, title });
+          console.log('Video can play:', { src, title, loadingStrategy });
           if (loadTimeout) {
             clearTimeout(loadTimeout);
             setLoadTimeout(null);
           }
           setIsLoaded(true);
+          setHasError(false);
         }}
         onLoadStart={() => {
-          console.log('Video load started:', { src, title });
+          console.log('Video load started:', { src, title, loadingStrategy });
         }}
         onLoadedMetadata={() => {
-          console.log('Video metadata loaded:', { src, title });
+          console.log('Video metadata loaded:', { src, title, loadingStrategy });
         }}
         onCanPlayThrough={() => {
-          console.log('Video can play through:', { src, title });
+          console.log('Video can play through:', { src, title, loadingStrategy });
           if (loadTimeout) {
             clearTimeout(loadTimeout);
             setLoadTimeout(null);
           }
           setIsLoaded(true);
+          setHasError(false);
+        }}
+        onProgress={() => {
+          console.log('Video progress:', { src, title, loadingStrategy });
         }}
         onError={(e) => {
           const target = e.target as HTMLVideoElement;
@@ -245,26 +260,25 @@ export function VideoPreview({
             readyState: target.readyState,
             src: target.src,
             currentSrc: target.currentSrc,
-            retryCount
+            retryCount,
+            loadingStrategy
           });
           
           if (retryCount < maxRetries) {
             console.log(`Retrying video load (${retryCount + 1}/${maxRetries}):`, { src, title });
             setRetryCount(prev => prev + 1);
-            // Reset video source to trigger reload
-            if (videoRef.current) {
-              const currentSrc = videoRef.current.src;
-              videoRef.current.src = '';
-              setTimeout(() => {
-                if (videoRef.current) {
-                  videoRef.current.src = currentSrc;
-                }
-              }, 1000 * (retryCount + 1)); // Exponential backoff
-            }
+            setLoadingStrategy('retry');
+            // Simple retry without recursive calls
+            setTimeout(() => {
+              if (videoRef.current) {
+                videoRef.current.load();
+              }
+            }, 1000 * (retryCount + 1)); // Exponential backoff
           } else {
             console.log('Max retries reached, showing error state:', { src, title });
             setHasError(true);
             setIsLoaded(true);
+            setLoadingStrategy('fallback');
           }
         }}
         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -280,8 +294,13 @@ export function VideoPreview({
           <div className="text-center">
             <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin mb-3 mx-auto"></div>
             <p className="text-sm text-primary font-medium">
-              {retryCount > 0 ? `Retrying... (${retryCount}/${maxRetries})` : 'Loading video...'}
+              {loadingStrategy === 'initial' && 'Loading video...'}
+              {loadingStrategy === 'retry' && `Retrying... (${retryCount}/${maxRetries})`}
+              {loadingStrategy === 'fallback' && 'Final attempt...'}
             </p>
+            <div className="mt-2 w-32 h-1 bg-primary/20 rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-primary to-accent rounded-full animate-pulse"></div>
+            </div>
           </div>
         </div>
       )}
