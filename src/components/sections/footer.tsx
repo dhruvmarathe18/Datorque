@@ -45,8 +45,8 @@ const footerLinks = {
 const socialLinks = [
   { name: "Facebook", href: "#", icon: Facebook },
   { name: "Twitter", href: "#", icon: Twitter },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/datorque-733356383/", icon: Linkedin },
+  { name: "Instagram", href: "https://www.instagram.com/datorque.global?igsh=aXplbWFsbXN4NWQx", icon: Instagram },
   { name: "GitHub", href: "#", icon: Github },
 ];
 
