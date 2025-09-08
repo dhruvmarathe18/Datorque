@@ -7,10 +7,7 @@ import {
   GraduationCap, 
   Briefcase, 
   Trophy, 
-  Clock, 
-  Users, 
   CheckCircle, 
-  X,
   Sparkles,
   Zap,
   Star,
@@ -619,7 +616,7 @@ export default function WebinarPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2 }}
           >
-            Don't Miss Out –{' '}
+            Don&apos;t Miss Out –{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-white bg-clip-text text-transparent">
               Your Career Starts Here
             </span>
@@ -664,11 +661,11 @@ export default function WebinarPage() {
               <Sparkles className="w-8 h-8 text-cyan-400" />
             </div>
             <blockquote className="text-2xl md:text-3xl font-light text-white leading-relaxed" style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}>
-              "You need to learn a skill that makes you{' '}
+              &ldquo;You need to learn a skill that makes you{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-white bg-clip-text text-transparent font-semibold">
                 irreplaceable
               </span>
-              ."
+              .&rdquo;
             </blockquote>
             <p className="text-gray-400 text-lg">
               Start your journey today

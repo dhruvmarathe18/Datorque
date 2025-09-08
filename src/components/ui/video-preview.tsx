@@ -177,7 +177,7 @@ export function VideoPreview({
       videoRef.current?.pause();
       setIsPlaying(false);
     }
-  }, [isInView, isLoaded, playOnView, isPlaying, hasError, src, title]);
+  }, [isInView, isLoaded, playOnView, isPlaying, hasError, src, title, safePlay]);
 
   React.useEffect(() => {
     const video = videoRef.current;

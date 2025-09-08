@@ -142,7 +142,7 @@ export default function ServicesPage() {
               Our <span className="text-gradient">Process</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              We follow a proven methodology to ensure your project's success from start to finish.
+              We follow a proven methodology to ensure your project&apos;s success from start to finish.
             </p>
           </motion.div>
 

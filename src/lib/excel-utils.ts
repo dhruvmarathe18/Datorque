@@ -87,7 +87,7 @@ class ExcelManager {
       // Skip header row and convert to registration objects
       const registrations: WebinarRegistration[] = [];
       for (let i = 1; i < data.length; i++) {
-        const row = data[i] as any[];
+        const row = data[i] as unknown[];
         if (row && row.length >= 6) {
           registrations.push({
             registrationNumber: row[0],

@@ -46,7 +46,7 @@ export default function AdminPage() {
       } else {
         setError(data.error || 'Failed to fetch data');
       }
-    } catch (err) {
+    } catch {
       setError('Network error. Please try again.');
     } finally {
       setLoading(false);
@@ -233,7 +233,7 @@ export default function AdminPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {stats.recentRegistrations.map((reg, index) => (
+                  {stats.recentRegistrations.map((reg) => (
                     <tr key={reg.registrationNumber} className="border-b border-gray-700/50 hover:bg-gray-700/30">
                       <td className="py-3 px-4 text-blue-400 font-mono">
                         #{reg.registrationNumber}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Rocket, Zap, Clock, Users, CheckCircle } from 'lucide-react';
+import { X, Rocket, Zap, Users, CheckCircle } from 'lucide-react';
 
 interface WebinarPopupProps {
   isOpen: boolean;
@@ -220,7 +220,7 @@ export function WebinarPopup({ isOpen, onClose }: WebinarPopupProps) {
                 transition={{ delay: 0.9 }}
               >
                 <p className="text-yellow-400 text-sm font-semibold">
-                  ⚡ Limited seats available - Don't miss out!
+                  ⚡ Limited seats available - Don&apos;t miss out!
                 </p>
               </motion.div>
             </div>

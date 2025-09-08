@@ -34,5 +34,14 @@
     "timestamp": "2025-09-08T18:04:48.167Z",
     "source": "webinar-landing-page",
     "registrationNumber": 4
+  },
+  {
+    "name": "Dhruv Vinod Marathe",
+    "email": "vinod.marathe@gmail.com",
+    "phone": "8956501983",
+    "college": "ss",
+    "timestamp": "2025-09-08T18:20:25.305Z",
+    "source": "webinar-landing-page",
+    "registrationNumber": 5
   }
 ]

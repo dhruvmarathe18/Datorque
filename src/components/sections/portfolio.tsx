@@ -100,7 +100,7 @@ export function Portfolio() {
                 role="button"
                 tabIndex={0}
                 aria-label={`View ${item.title} project details`}
-                onClick={(e) => {
+                onClick={() => {
                   // Only allow click on desktop (not mobile)
                   if (window.innerWidth >= 768) {
                     openPreview(item.id);
