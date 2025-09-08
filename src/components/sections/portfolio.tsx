@@ -96,15 +96,16 @@ export function Portfolio() {
               <Card 
                 variant="glass" 
                 hover 
-                className="portfolio-card overflow-hidden cursor-pointer touch-manipulation group relative bg-gradient-to-br from-surface-900/50 to-surface-800/30 backdrop-blur-xl border border-white/10 hover:border-primary/30 transition-all duration-500"
-                onClick={() => openPreview(item.id)}
-                onTouchEnd={(e) => {
-                  e.preventDefault();
-                  openPreview(item.id);
-                }}
+                className="portfolio-card overflow-hidden group relative bg-gradient-to-br from-surface-900/50 to-surface-800/30 backdrop-blur-xl border border-white/10 hover:border-primary/30 transition-all duration-500"
                 role="button"
                 tabIndex={0}
                 aria-label={`View ${item.title} project details`}
+                onClick={(e) => {
+                  // Only allow click on desktop (not mobile)
+                  if (window.innerWidth >= 768) {
+                    openPreview(item.id);
+                  }
+                }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -230,6 +231,14 @@ export function Portfolio() {
                     </div>
                   </div>
 
+                  {/* Mobile Preview Hint */}
+                  <div className="absolute top-2 left-2 sm:hidden z-20">
+                    <div className="px-2 py-1 bg-black/50 backdrop-blur-sm rounded-full text-xs text-white font-medium flex items-center space-x-1">
+                      <Eye className="w-3 h-3" />
+                      <span>Tap Preview</span>
+                    </div>
+                  </div>
+
                   {/* Performance Badge */}
                   <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 z-20">
                     <div className="flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-500/20 to-green-400/20 backdrop-blur-md rounded-lg px-2 py-1 sm:px-3 sm:py-2 border border-green-400/30 shadow-lg">
@@ -286,7 +295,11 @@ export function Portfolio() {
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300 text-xs sm:text-sm font-medium border-surface-600/50 hover:border-primary/50"
+                      className="group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300 text-xs sm:text-sm font-medium border-surface-600/50 hover:border-primary/50 sm:bg-transparent bg-primary/10 sm:bg-transparent border-primary/30 sm:border-surface-600/50"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openPreview(item.id);
+                      }}
                     >
                       <Eye className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                       Preview
