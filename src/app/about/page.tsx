@@ -214,8 +214,8 @@ export default function AboutPage() {
             </p>
             <div className="bg-primary/10 rounded-2xl p-8 border border-primary/20">
               <p className="text-lg text-white font-medium">
-                "Fueling your digital momentum through innovative web solutions, 
-                exceptional design, and unwavering commitment to your success."
+                &ldquo;Fueling your digital momentum through innovative web solutions, 
+                exceptional design, and unwavering commitment to your success.&rdquo;
               </p>
             </div>
           </motion.div>
