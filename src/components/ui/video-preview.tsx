@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import Image from "next/image";
 import { Button } from "./button";
 
 interface VideoPreviewProps {
@@ -26,7 +27,6 @@ export function VideoPreview({
   autoPlay = true,
   muted = true,
   loop = true,
-  controls = false,
   playOnView = false,
 }: VideoPreviewProps) {
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -44,11 +44,10 @@ export function VideoPreview({
   // Use intersection observer to detect when video comes into view
   const isInView = useInView(containerRef, { 
     once: false, 
-    margin: "-10% 0px -10% 0px",
-    threshold: 0.1 
+    margin: "-10% 0px -10% 0px"
   });
 
-  const safePlay = async () => {
+  const safePlay = React.useCallback(async () => {
     if (!videoRef.current) {
       console.log('Video ref not available');
       return;
@@ -60,7 +59,7 @@ export function VideoPreview({
     if (playPromiseRef.current) {
       try {
         await playPromiseRef.current;
-      } catch (error) {
+      } catch {
         // Ignore errors from cancelled promises
       }
     }
@@ -76,7 +75,7 @@ export function VideoPreview({
     } finally {
       playPromiseRef.current = null;
     }
-  };
+  }, [src, title]);
 
   const togglePlay = async () => {
     if (videoRef.current) {
@@ -302,13 +301,16 @@ export function VideoPreview({
 
       {/* Fallback Image */}
       {poster && (
-        <img
+        <Image
           src={poster}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+          fill
+          className="object-cover transition-opacity duration-500"
           style={{
             opacity: (isLoaded && !hasError) ? 0 : 1,
           }}
+          priority={false}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       )}
 
