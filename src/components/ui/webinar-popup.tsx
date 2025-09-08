@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Rocket, Zap, Users, CheckCircle } from 'lucide-react';
+import { X, Rocket, Zap, Users, Sparkles, GraduationCap, Briefcase, Trophy } from 'lucide-react';
 
 interface WebinarPopupProps {
   isOpen: boolean;
@@ -56,41 +56,45 @@ export function WebinarPopup({ isOpen, onClose }: WebinarPopupProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/60 backdrop-blur-xl z-50 flex items-center justify-center p-3 sm:p-4 md:p-6"
         >
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-2xl p-8 max-w-2xl w-full relative overflow-hidden"
+            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 max-w-lg w-full relative overflow-hidden shadow-2xl"
+            style={{ fontFamily: 'SF Pro Display, -apple-system, BlinkMacSystemFont, sans-serif' }}
           >
             {/* Close Button */}
-            <button
+            <motion.button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="absolute top-4 right-4 text-gray-400 hover:text-white transition-all duration-200 p-2 rounded-2xl hover:bg-white/10"
             >
-              <X className="w-6 h-6" />
-            </button>
+              <X className="w-5 h-5" />
+            </motion.button>
 
             {/* Floating Background Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {[...Array(10)].map((_, i) => (
+              {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-1 h-1 bg-blue-400 rounded-full opacity-30"
+                  className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
                   }}
                   animate={{
-                    y: [0, -20, 0],
+                    y: [0, -30, 0],
                     opacity: [0.3, 0.8, 0.3],
+                    scale: [1, 1.2, 1],
                   }}
                   transition={{
-                    duration: 3 + Math.random() * 2,
+                    duration: 4 + Math.random() * 2,
                     repeat: Infinity,
-                    delay: Math.random() * 2,
+                    delay: Math.random() * 3,
                   }}
                 />
               ))}
@@ -98,31 +102,31 @@ export function WebinarPopup({ isOpen, onClose }: WebinarPopupProps) {
 
             <div className="relative z-10">
               {/* Header */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-6 sm:mb-8">
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-white text-black px-4 py-2 rounded-2xl text-xs sm:text-sm font-semibold mb-4 shadow-lg"
                 >
-                  <Zap className="w-4 h-4" />
+                  <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
                   FREE STUDENT WEBINAR
                 </motion.div>
                 
                 <motion.h1
-                  className="text-3xl md:text-4xl font-bold text-white mb-4"
+                  className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-3 sm:mb-4 leading-tight"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
                   Turn Your Skills Into a{' '}
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-cyan-400 to-white bg-clip-text text-transparent font-semibold">
                     Career in Tech!
                   </span>
                 </motion.h1>
                 
                 <motion.p
-                  className="text-gray-300 text-lg"
+                  className="text-gray-400 text-sm sm:text-base leading-relaxed"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
@@ -133,80 +137,95 @@ export function WebinarPopup({ isOpen, onClose }: WebinarPopupProps) {
 
               {/* Countdown Timer */}
               <motion.div
-                className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 mb-8"
+                className="backdrop-blur-xl bg-white/5 border border-white/20 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 }}
               >
                 <div className="text-center mb-4">
-                  <p className="text-blue-100 text-sm font-semibold">Webinar Starts In:</p>
+                  <p className="text-gray-400 text-xs sm:text-sm font-medium tracking-wide">Webinar Starts In:</p>
                 </div>
-                <div className="flex justify-center gap-4">
+                <div className="flex justify-center gap-3 sm:gap-4">
                   {Object.entries(timeLeft).map(([unit, value]) => (
-                    <div key={unit} className="text-center">
-                      <div className="text-2xl font-bold text-white">{value}</div>
-                      <div className="text-xs text-blue-100 capitalize">{unit}</div>
-                    </div>
+                    <motion.div 
+                      key={unit} 
+                      className="text-center"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <div className="text-xl sm:text-2xl md:text-3xl font-light text-white mb-1 tracking-tight">
+                        {value.toString().padStart(2, '0')}
+                      </div>
+                      <div className="text-xs text-gray-500 uppercase tracking-widest">{unit}</div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
 
               {/* Benefits */}
               <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
                 {[
-                  '🚀 Build Startup-Style Websites',
-                  '🎓 Real-World Internship Insights',
-                  '💼 Earn Through Tech Skills',
-                  '🏆 Free Participation Certificate'
+                  { icon: Rocket, text: 'Build Startup-Style Websites' },
+                  { icon: GraduationCap, text: 'Real-World Internship Insights' },
+                  { icon: Briefcase, text: 'Earn Through Tech Skills' },
+                  { icon: Trophy, text: 'Free Participation Certificate' }
                 ].map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3 text-gray-300">
-                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
-                    <span className="text-sm">{benefit}</span>
-                  </div>
+                  <motion.div 
+                    key={index} 
+                    className="flex items-center gap-3 text-gray-300 p-3 rounded-2xl hover:bg-white/5 transition-all duration-200"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="w-8 h-8 rounded-2xl bg-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                      <benefit.icon className="w-4 h-4 text-cyan-400" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium">{benefit.text}</span>
+                  </motion.div>
                 ))}
               </motion.div>
 
               {/* Social Proof */}
               <motion.div
-                className="text-center mb-8"
+                className="text-center mb-6 sm:mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
               >
-                <div className="flex items-center justify-center gap-2 text-yellow-400 mb-2">
-                  <Users className="w-5 h-5" />
-                  <span className="font-semibold">5000+ students already registered</span>
+                <div className="flex items-center justify-center gap-2 text-cyan-400 mb-2">
+                  <div className="w-6 h-6 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
+                    <Users className="w-3 h-3" />
+                  </div>
+                  <span className="font-semibold text-sm sm:text-base">5000+ students already registered</span>
                 </div>
-                <p className="text-gray-400 text-sm">Join the community of successful students!</p>
+                <p className="text-gray-400 text-xs sm:text-sm">Join the community of successful students!</p>
               </motion.div>
 
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
                 <motion.button
                   onClick={handleRegister}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 bg-gradient-to-r from-cyan-500 to-white text-black font-semibold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
                 >
-                  <Rocket className="w-5 h-5" />
-                  Reserve My Free Seat
+                  <Rocket className="w-4 h-4" />
+                  <span className="text-sm sm:text-base">Reserve My Free Seat</span>
                 </motion.button>
                 
                 <motion.button
                   onClick={onClose}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-4 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-6 py-4 bg-white/10 hover:bg-white/20 text-white rounded-2xl transition-all duration-200 text-sm sm:text-base font-medium"
                 >
                   Maybe Later
                 </motion.button>
@@ -214,14 +233,17 @@ export function WebinarPopup({ isOpen, onClose }: WebinarPopupProps) {
 
               {/* Urgency */}
               <motion.div
-                className="text-center mt-6"
+                className="text-center mt-4 sm:mt-6"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
               >
-                <p className="text-yellow-400 text-sm font-semibold">
-                  ⚡ Limited seats available - Don&apos;t miss out!
-                </p>
+                <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-400 px-4 py-2 rounded-2xl">
+                  <Sparkles className="w-3 h-3" />
+                  <p className="text-xs sm:text-sm font-semibold">
+                    Limited seats available - Don&apos;t miss out!
+                  </p>
+                </div>
               </motion.div>
             </div>
           </motion.div>
