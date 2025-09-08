@@ -193,11 +193,10 @@ const WebinarForm = ({ onSeatUpdate }: { onSeatUpdate: () => void }) => {
         // Update the seat count
         onSeatUpdate();
       } else {
-        setError(data.error || 'Registration failed. Please try again.');
+        console.error('Registration failed:', data.error || 'Registration failed. Please try again.');
       }
     } catch (error) {
       console.error('Registration error:', error);
-      setError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
