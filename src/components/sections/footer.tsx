@@ -178,14 +178,9 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
-          >
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
             <div className="text-sm text-text-muted">
-              © 2024 DatorQue. All rights reserved. Made with ❤️ in India.
+              © 2025 DatorQue. All rights reserved. Made with ❤️ in India.
             </div>
             <div className="flex items-center space-x-6 text-sm text-text-muted">
               <span>GST: 27ABCDE1234F1Z5</span>
@@ -194,7 +189,7 @@ export function Footer() {
               <span>•</span>
               <span>GDPR Compliant</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </footer>

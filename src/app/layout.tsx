@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/sections/navigation";
-import { Footer } from "@/components/sections/footer";
-import { ChatWidget } from "@/components/ui/chat-widget";
+import { PopupWrapper } from "@/components/ui/popup-wrapper";
+import { ConditionalComponents } from "@/components/conditional-components";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -104,12 +103,11 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <Navigation />
           <main className="min-h-screen">
             {children}
           </main>
-          <Footer />
-          <ChatWidget />
+          <ConditionalComponents />
+          <PopupWrapper />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

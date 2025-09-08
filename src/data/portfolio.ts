@@ -5,7 +5,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "techstartup-saas",
     title: "Bangalore Real Estate Co",
     client: "Real Estate Category",
-    industry: "SaaS",
+    industry: "Real Estate",
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Vercel"],
     description: "A comprehensive SaaS platform for project management with real-time collaboration features, advanced analytics, and seamless user experience.",
     problem: "TechStartup needed a modern, scalable platform to manage their growing user base and complex project workflows. Their existing solution was slow, outdated, and couldn't handle their growth.",
@@ -63,13 +63,13 @@ export const portfolioItems: PortfolioItem[] = [
       after: "/portfolio/techstartup-after.jpg"
     },
     tags: ["SaaS", "Real-time", "Analytics", "Modern UI"],
-    year: 2024
+    year: 2025
   },
   {
     id: "fashion-ecommerce",
     title: "Revive - The Elite Fitness",
     client: "Fitness Category",
-    industry: "Fashion",
+    industry: "Fitness",
     stack: ["Shopify", "Liquid", "JavaScript", "CSS3", "Shopify Apps"],
     description: "The Elite Fitness Club — designed to reflect strength, luxury, and motivation. With a sleek dark theme, bold typography, and dynamic visuals, the website captures the energy of fitness while providing an effortless user experience",
     problem: "Fashion Forward's existing website had poor mobile experience, slow loading times, and low conversion rates. They needed a modern, mobile-first solution that could showcase their products effectively.",
@@ -127,7 +127,7 @@ export const portfolioItems: PortfolioItem[] = [
       after: "/portfolio/fashion-after.jpg"
     },
     tags: ["eCommerce", "Fashion", "Mobile-first", "AR Features"],
-    year: 2024
+    year: 2025
   },
   {
     id: "healthcare-portal",
@@ -191,7 +191,7 @@ export const portfolioItems: PortfolioItem[] = [
       after: "/portfolio/healthcare-after.jpg"
     },
     tags: ["Healthcare", "Security", "Patient Portal", "HIPAA Compliant"],
-    year: 2024
+    year: 2025
   },
   {
     id: "education-platform",
@@ -325,7 +325,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: "fintech-dashboard",
     title: "Planet Entertainment",
     client: "Events Category",
-    industry: "Fintech",
+    industry: "Lifestyle & Celebrations",
     stack: ["React", "TypeScript", "D3.js", "Node.js", "PostgreSQL", "AWS"],
     description: "Datorque built a vibrant and dynamic website for The Event Masters — your one-stop destination for unforgettable celebrations. With a bold, festive design, immersive visuals, and smooth animations, the website captures the excitement of weddings, corporate events, and luxury parties.",
     problem: "WealthWise needed a secure, intuitive platform for their clients to track investments and manage portfolios. The existing solution was complex and difficult to use.",

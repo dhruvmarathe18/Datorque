@@ -15,6 +15,9 @@ const planIcons = {
   business: Star,
   growth: Rocket,
   enterprise: Crown,
+  "care-starter": Zap,
+  "care-business": Star,
+  "care-enterprise": Crown,
 };
 
 export function Pricing() {
