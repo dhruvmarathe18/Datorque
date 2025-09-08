@@ -47,7 +47,7 @@ export const portfolioItems: PortfolioItem[] = [
       company: "TechStartup",
       role: "CEO",
       avatar: "/testimonials/sarah-johnson.jpg",
-      content: "Datorque transformed our platform completely. The new design is not only beautiful but also incredibly functional. Our users love it and our conversion rates have skyrocketed.",
+      content: "DatorQue transformed our platform completely. The new design is not only beautiful but also incredibly functional. Our users love it and our conversion rates have skyrocketed.",
       rating: 5,
       project: "TechStartup SaaS Platform",
       verified: true
@@ -111,7 +111,7 @@ export const portfolioItems: PortfolioItem[] = [
       company: "Fashion Forward",
       role: "Founder",
       avatar: "/testimonials/priya-sharma.jpg",
-      content: "The new website has completely transformed our online business. The mobile experience is incredible and our sales have increased by over 300%. Highly recommend Datorque!",
+      content: "The new website has completely transformed our online business. The mobile experience is incredible and our sales have increased by over 300%. Highly recommend DatorQue!",
       rating: 5,
       project: "Fashion Forward eCommerce",
       verified: true

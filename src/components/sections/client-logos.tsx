@@ -36,7 +36,7 @@ export function ClientLogos() {
             Trusted by <span className="text-gradient bg-gradient-to-r from-primary-400 via-primary-500 to-accent-400 bg-clip-text text-transparent">Amazing Companies</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Join hundreds of successful businesses who chose Datorque for their digital transformation
+            Join hundreds of successful businesses who chose DatorQue for their digital transformation
           </p>
         </motion.div>
 

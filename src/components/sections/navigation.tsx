@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -71,10 +72,16 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">D</span>
+            <div className="w-8 h-8 relative">
+              <Image
+                src="/logo.png"
+                alt="DatorQue Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-text-primary">Datorque</span>
+            <span className="text-xl font-bold text-text-primary">DatorQue</span>
           </Link>
 
           {/* Desktop Navigation */}

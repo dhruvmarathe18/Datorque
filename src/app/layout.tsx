@@ -16,21 +16,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Datorque - Premium Website Development for Indian Businesses",
-  description: "Build faster, convert higher. Datorque creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell. Get your quote today.",
+  title: "DatorQue - Premium Website Development for Indian Businesses",
+  description: "Build faster, convert higher. DatorQue creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell. Get your quote today.",
   keywords: [
     "website development",
     "web design",
     "ecommerce development",
     "SEO optimization",
     "Indian web agency",
-    "Mumbai web developers",
+    "Bangalore web developers",
     "responsive design",
     "digital marketing"
   ],
-  authors: [{ name: "Datorque Team" }],
-  creator: "Datorque",
-  publisher: "Datorque",
+  authors: [{ name: "DatorQue Team" }],
+  creator: "DatorQue",
+  publisher: "DatorQue",
   formatDetection: {
     email: false,
     address: false,
@@ -40,26 +40,37 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_IN",
     url: "https://datorque.com",
-    title: "Datorque - Premium Website Development for Indian Businesses",
-    description: "Build faster, convert higher. Datorque creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell.",
-    siteName: "Datorque",
+    title: "DatorQue - Premium Website Development for Indian Businesses",
+    description: "Build faster, convert higher. DatorQue creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell.",
+    siteName: "DatorQue",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Datorque - Premium Website Development",
+        alt: "DatorQue - Premium Website Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Datorque - Premium Website Development for Indian Businesses",
-    description: "Build faster, convert higher. Datorque creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell.",
+    title: "DatorQue - Premium Website Development for Indian Businesses",
+    description: "Build faster, convert higher. DatorQue creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell.",
     images: ["/og-image.jpg"],
     creator: "@datorque",
   },

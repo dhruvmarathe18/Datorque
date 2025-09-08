@@ -9,6 +9,6 @@ export default function PricingPage() {
 }
 
 export const metadata = {
-  title: "Pricing - Datorque",
+  title: "Pricing - DatorQue",
   description: "Transparent pricing for our web development services. Choose the perfect plan for your business needs.",
 };

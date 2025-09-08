@@ -68,7 +68,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl sm:text-2xl text-text-muted max-w-3xl mx-auto leading-relaxed"
           >
-            Datorque makes premium websites for Indian brands—speedy, SEO-solid, and designed to sell.
+            DatorQue makes premium websites for Indian brands—speedy, SEO-solid, and designed to sell.
           </motion.p>
 
           {/* CTA Buttons */}

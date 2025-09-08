@@ -35,7 +35,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-white font-medium">Phone</p>
-                  <p className="text-gray-300">+91 98765 43210</p>
+                  <p className="text-gray-300">+91 88615 98453</p>
                 </div>
               </div>
               
@@ -48,7 +48,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <p className="text-white font-medium">Location</p>
-                  <p className="text-gray-300">Mumbai, India</p>
+                  <p className="text-gray-300">Bangalore, India</p>
                 </div>
               </div>
             </div>
@@ -120,6 +120,6 @@ export default function ContactPage() {
 }
 
 export const metadata = {
-  title: "Contact - Datorque",
-  description: "Get in touch with Datorque for your web development needs. We're here to fuel your digital momentum.",
+  title: "Contact - DatorQue",
+  description: "Get in touch with DatorQue for your web development needs. We're here to fuel your digital momentum.",
 };

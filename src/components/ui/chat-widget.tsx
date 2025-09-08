@@ -79,7 +79,7 @@ export function ChatWidget() {
                   <span className="text-white font-bold text-sm">D</span>
                 </div>
                 <div>
-                  <h3 className="text-white font-semibold">Datorque Support</h3>
+                  <h3 className="text-white font-semibold">DatorQue Support</h3>
                   <p className="text-xs text-gray-400">Usually replies in minutes</p>
                 </div>
               </div>

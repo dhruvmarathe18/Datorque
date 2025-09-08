@@ -288,7 +288,7 @@ export function QuizModal({ isOpen, onClose }: QuizModalProps) {
     if (!generatedReport) return;
     
     const subject = `Personalized Website Report - ${generatedReport.businessName}`;
-    const body = `Hi ${String(responses["contact-name"] || "there")},\n\nThank you for completing our quiz! Your personalized report is ready.\n\nBest regards,\nDatorque Team`;
+    const body = `Hi ${String(responses["contact-name"] || "there")},\n\nThank you for completing our quiz! Your personalized report is ready.\n\nBest regards,\nDatorQue Team`;
     window.open(`mailto:${String(responses["contact-email"] || "")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
   };
 

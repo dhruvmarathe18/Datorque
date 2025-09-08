@@ -9,6 +9,6 @@ export default function PortfolioPage() {
 }
 
 export const metadata = {
-  title: "Portfolio - Datorque",
+  title: "Portfolio - DatorQue",
   description: "See our live work and portfolio of successful projects. Experience our websites in real-time.",
 };

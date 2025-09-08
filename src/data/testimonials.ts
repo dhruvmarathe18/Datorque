@@ -7,7 +7,7 @@ export const testimonials: Testimonial[] = [
     company: "TechStartup",
     role: "CEO",
     avatar: "/testimonials/sarah-johnson.jpg",
-    content: "Datorque transformed our platform completely. The new design is not only beautiful but also incredibly functional. Our users love it and our conversion rates have skyrocketed by 180%. The team's attention to detail and understanding of our business needs was exceptional.",
+    content: "DatorQue transformed our platform completely. The new design is not only beautiful but also incredibly functional. Our users love it and our conversion rates have skyrocketed by 180%. The team's attention to detail and understanding of our business needs was exceptional.",
     rating: 5,
     project: "TechStartup SaaS Platform",
     verified: true
@@ -18,7 +18,7 @@ export const testimonials: Testimonial[] = [
     company: "Fashion Forward",
     role: "Founder",
     avatar: "/testimonials/priya-sharma.jpg",
-    content: "The new website has completely transformed our online business. The mobile experience is incredible and our sales have increased by over 300%. The team understood our vision perfectly and delivered beyond our expectations. Highly recommend Datorque!",
+    content: "The new website has completely transformed our online business. The mobile experience is incredible and our sales have increased by over 300%. The team understood our vision perfectly and delivered beyond our expectations. Highly recommend DatorQue!",
     rating: 5,
     project: "Fashion Forward eCommerce",
     verified: true
@@ -73,7 +73,7 @@ export const testimonials: Testimonial[] = [
     company: "GreenTech Solutions",
     role: "Marketing Director",
     avatar: "/testimonials/neha-gupta.jpg",
-    content: "Working with Datorque was a game-changer for our digital presence. They understood our sustainability mission and created a website that perfectly represents our brand values. The SEO improvements alone have increased our organic traffic by 250%.",
+    content: "Working with DatorQue was a game-changer for our digital presence. They understood our sustainability mission and created a website that perfectly represents our brand values. The SEO improvements alone have increased our organic traffic by 250%.",
     rating: 5,
     project: "GreenTech Corporate Website",
     verified: true
@@ -84,7 +84,7 @@ export const testimonials: Testimonial[] = [
     company: "StartupHub",
     role: "Co-founder",
     avatar: "/testimonials/arjun-mehta.jpg",
-    content: "Datorque delivered an exceptional product that exceeded our expectations. The team's technical expertise and creative approach helped us launch our startup with a professional, scalable platform. The ongoing support has been outstanding.",
+    content: "DatorQue delivered an exceptional product that exceeded our expectations. The team's technical expertise and creative approach helped us launch our startup with a professional, scalable platform. The ongoing support has been outstanding.",
     rating: 5,
     project: "StartupHub Platform",
     verified: true
@@ -106,7 +106,7 @@ export const testimonials: Testimonial[] = [
     company: "RetailMax",
     role: "Operations Manager",
     avatar: "/testimonials/vikas-sharma.jpg",
-    content: "The eCommerce solution Datorque built for us has been phenomenal. Our online sales have increased by 400% and the platform handles our peak traffic seamlessly. The integration with our existing systems was smooth and efficient.",
+    content: "The eCommerce solution DatorQue built for us has been phenomenal. Our online sales have increased by 400% and the platform handles our peak traffic seamlessly. The integration with our existing systems was smooth and efficient.",
     rating: 5,
     project: "RetailMax eCommerce",
     verified: true

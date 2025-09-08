@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Github, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -65,10 +66,16 @@ export function Footer() {
             >
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">D</span>
+                <div className="w-8 h-8 relative">
+                  <Image
+                    src="/logo.png"
+                    alt="DatorQue Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <span className="text-xl font-bold text-text-primary">Datorque</span>
+                <span className="text-xl font-bold text-text-primary">DatorQue</span>
               </Link>
 
               {/* Tagline */}
@@ -84,11 +91,11 @@ export function Footer() {
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-text-muted">
                   <Phone className="w-4 h-4 text-primary" />
-                  <span>+91 98765 43210</span>
+                  <span>+91 88615 98453</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-text-muted">
                   <MapPin className="w-4 h-4 text-primary" />
-                  <span>Mumbai, India</span>
+                  <span>Bangalore, India</span>
                 </div>
               </div>
 
@@ -178,7 +185,7 @@ export function Footer() {
             className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0"
           >
             <div className="text-sm text-text-muted">
-              © 2024 Datorque. All rights reserved. Made with ❤️ in India.
+              © 2024 DatorQue. All rights reserved. Made with ❤️ in India.
             </div>
             <div className="flex items-center space-x-6 text-sm text-text-muted">
               <span>GST: 27ABCDE1234F1Z5</span>

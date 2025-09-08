@@ -9,6 +9,6 @@ export default function ServicesPage() {
 }
 
 export const metadata = {
-  title: "Services - Datorque",
+  title: "Services - DatorQue",
   description: "Our comprehensive web development services including business websites, eCommerce, landing pages, and more.",
 };
