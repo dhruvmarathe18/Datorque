@@ -118,7 +118,7 @@ class ExcelManager {
 
       registrations.forEach(reg => {
         excelData.push([
-          reg.registrationNumber || '',
+          String(reg.registrationNumber || ''),
           reg.name,
           reg.email,
           reg.phone,
