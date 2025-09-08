@@ -2,8 +2,14 @@
 
 import { useState } from 'react';
 
+interface ApiResult {
+  status?: number;
+  data?: unknown;
+  error?: string;
+}
+
 export default function TestAPIPage() {
-  const [result, setResult] = useState<unknown>(null);
+  const [result, setResult] = useState<ApiResult | null>(null);
   const [loading, setLoading] = useState(false);
 
   const testRegistration = async () => {
