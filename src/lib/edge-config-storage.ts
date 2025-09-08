@@ -11,11 +11,15 @@ export interface WebinarRegistration {
 }
 
 class EdgeConfigStorageManager {
-  private readonly edgeConfigId = 'ecfg_rfb73qburo1alpsfoxu89vhqhiqp';
-
   // Get all registrations from Edge Config
   private async getRegistrations(): Promise<WebinarRegistration[]> {
     try {
+      // Check if Edge Config is available
+      if (!process.env.EDGE_CONFIG) {
+        console.log('Edge Config not configured, using memory storage only');
+        return [];
+      }
+      
       const registrations = await get('webinar_registrations');
       return Array.isArray(registrations) ? registrations : [];
     } catch (error) {
@@ -24,40 +28,35 @@ class EdgeConfigStorageManager {
     }
   }
 
-  // Save registrations to Edge Config
-  private async saveRegistrations(registrations: WebinarRegistration[]): Promise<void> {
-    try {
-      // Note: Edge Config is read-only in serverless functions
-      // We'll need to use a different approach for writes
-      console.log('Edge Config is read-only, using fallback storage');
-    } catch (error) {
-      console.error('Error saving to Edge Config:', error);
-    }
-  }
-
-  // Add a new registration (fallback to memory storage)
+  // Add a new registration (using memory storage as primary)
   public async addRegistration(registration: Omit<WebinarRegistration, 'registrationNumber'>): Promise<WebinarRegistration> {
     console.log('Edge Config Storage: Adding registration', registration);
     
-    // Get existing registrations
-    const existingRegistrations = await this.getRegistrations();
-    const registrationNumber = existingRegistrations.length + 1;
+    // Get existing registrations from Edge Config
+    const edgeRegistrations = await this.getRegistrations();
+    
+    // Get memory registrations
+    if (typeof window === 'undefined') {
+      if (!global.webinarRegistrations) {
+        global.webinarRegistrations = [];
+      }
+    }
+    
+    const memoryRegistrations = (typeof window === 'undefined' && global.webinarRegistrations) 
+      ? global.webinarRegistrations as WebinarRegistration[] 
+      : [];
+    
+    // Combine all registrations
+    const allRegistrations = [...edgeRegistrations, ...memoryRegistrations];
+    const registrationNumber = allRegistrations.length + 1;
     
     const newRegistration: WebinarRegistration = {
       ...registration,
       registrationNumber
     };
 
-    // Since Edge Config is read-only in serverless functions,
-    // we'll use a hybrid approach with memory storage as fallback
-    const updatedRegistrations = [...existingRegistrations, newRegistration];
-    
-    // Store in memory as fallback
+    // Store in memory (primary storage)
     if (typeof window === 'undefined') {
-      // Server-side: store in global memory
-      if (!global.webinarRegistrations) {
-        global.webinarRegistrations = [];
-      }
       global.webinarRegistrations.push(newRegistration);
     }
 
@@ -69,20 +68,18 @@ class EdgeConfigStorageManager {
   public async getAllRegistrations(): Promise<WebinarRegistration[]> {
     const edgeRegistrations = await this.getRegistrations();
     
-    // Merge with memory storage if available
-    if (typeof window === 'undefined' && global.webinarRegistrations) {
-      const memoryRegistrations = global.webinarRegistrations as WebinarRegistration[];
-      const allRegistrations = [...edgeRegistrations, ...memoryRegistrations];
-      
-      // Remove duplicates based on email
-      const uniqueRegistrations = allRegistrations.filter((reg, index, self) => 
-        index === self.findIndex(r => r.email === reg.email)
-      );
-      
-      return uniqueRegistrations;
-    }
+    // Get memory registrations
+    const memoryRegistrations = (typeof window === 'undefined' && global.webinarRegistrations) 
+      ? global.webinarRegistrations as WebinarRegistration[] 
+      : [];
     
-    return edgeRegistrations;
+    // Combine and deduplicate
+    const allRegistrations = [...edgeRegistrations, ...memoryRegistrations];
+    const uniqueRegistrations = allRegistrations.filter((reg, index, self) => 
+      index === self.findIndex(r => r.email === reg.email)
+    );
+    
+    return uniqueRegistrations;
   }
 
   // Get registration count
