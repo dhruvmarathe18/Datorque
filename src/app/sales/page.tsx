@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { CheckCircleIcon, CurrencyDollarIcon, RocketLaunchIcon, UserGroupIcon, StarIcon, ArrowRightIcon, XMarkIcon, ClockIcon, FireIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, CurrencyDollarIcon, RocketLaunchIcon, UserGroupIcon, ArrowRightIcon, XMarkIcon, ClockIcon, FireIcon } from "@heroicons/react/24/outline";
 
 export default function SalesPartnerPage() {
   const [formData, setFormData] = useState({
@@ -415,7 +415,7 @@ export default function SalesPartnerPage() {
                 viewport={{ once: true }}
               >
                 <p className="text-yellow-400 font-bold text-center italic">
-                  "Your friends waste time scrolling Instagram. You can make money from it."
+                  &ldquo;Your friends waste time scrolling Instagram. You can make money from it.&rdquo;
                 </p>
               </motion.div>
             </motion.div>
@@ -587,7 +587,7 @@ export default function SalesPartnerPage() {
               <CheckCircleIcon className="w-20 h-20 text-green-400 mx-auto mb-6" />
               <h3 className="text-3xl font-black text-white mb-4">Registration Successful!</h3>
               <p className="text-xl text-gray-300 mb-6">
-                Welcome to the DatorQue Sales Partner program! We'll contact you within 24 hours with your partner credentials and getting started guide.
+                Welcome to the DatorQue Sales Partner program! We&apos;ll contact you within 24 hours with your partner credentials and getting started guide.
               </p>
               <div className="text-xl text-green-400 font-bold">
                 Get ready to start earning! 🚀
@@ -607,7 +607,7 @@ export default function SalesPartnerPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-8 leading-tight">
-              Don't just watch others earn. Take control. Start earning{" "}
+              Don&apos;t just watch others earn. Take control. Start earning{" "}
               <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent animate-pulse">
                 ₹2000+ daily
               </span>{" "}
@@ -654,7 +654,7 @@ export default function SalesPartnerPage() {
               
               <FireIcon className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
               <h3 className="text-xl font-black text-white mb-4">
-                Wait! Don't leave your ₹2000/day behind.
+                Wait! Don&apos;t leave your ₹2000/day behind.
               </h3>
               <p className="text-gray-300 mb-6">
                 Register free now and start earning with DatorQue today!
