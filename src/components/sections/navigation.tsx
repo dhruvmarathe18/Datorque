@@ -15,6 +15,7 @@ const navigation = [
   { name: "Services", href: "/services" },
   { name: "Portfolio", href: "/portfolio" },
   { name: "Pricing", href: "/pricing" },
+  { name: "Sales Partner", href: "/sales", highlight: true },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
@@ -94,7 +95,8 @@ export function Navigation() {
                   "text-sm font-medium transition-colors duration-200 hover:text-primary",
                   pathname === item.href
                     ? "text-primary"
-                    : "text-text-secondary"
+                    : "text-text-secondary",
+                  item.highlight && "bg-gradient-to-r from-accent-400 to-accent-600 text-dark-900 px-3 py-1 rounded-full font-bold"
                 )}
               >
                 {item.name}
@@ -180,7 +182,8 @@ export function Navigation() {
                     "block text-base font-medium transition-colors duration-200",
                     pathname === item.href
                       ? "text-primary"
-                      : "text-text-secondary hover:text-primary"
+                      : "text-text-secondary hover:text-primary",
+                    item.highlight && "bg-gradient-to-r from-accent-400 to-accent-600 text-dark-900 px-3 py-1 rounded-full font-bold text-center"
                   )}
                   onClick={() => setIsOpen(false)}
                 >

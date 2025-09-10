@@ -30,6 +30,12 @@ export const metadata: Metadata = {
   authors: [{ name: "DatorQue Team" }],
   creator: "DatorQue",
   publisher: "DatorQue",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
   formatDetection: {
     email: false,
     address: false,
