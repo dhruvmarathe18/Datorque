@@ -13,6 +13,7 @@ export default function SalesPartnerPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [showExitPopup, setShowExitPopup] = useState(false);
+  const [lastPopupTime, setLastPopupTime] = useState(0);
   const [timeLeft, setTimeLeft] = useState({
     days: 3,
     hours: 14,
@@ -40,17 +41,21 @@ export default function SalesPartnerPage() {
     return () => clearInterval(timer);
   }, []);
 
-  // Exit intent popup
+  // Exit intent popup - show every 1 minute
   useEffect(() => {
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !showExitPopup && !isSubmitted) {
+      const currentTime = Date.now();
+      const oneMinute = 60 * 1000; // 1 minute in milliseconds
+      
+      if (e.clientY <= 0 && !showExitPopup && !isSubmitted && (currentTime - lastPopupTime) >= oneMinute) {
         setShowExitPopup(true);
+        setLastPopupTime(currentTime);
       }
     };
 
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [showExitPopup, isSubmitted]);
+  }, [showExitPopup, isSubmitted, lastPopupTime]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
