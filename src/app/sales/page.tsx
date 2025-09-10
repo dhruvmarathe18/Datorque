@@ -568,7 +568,7 @@ export default function SalesPartnerPage() {
                       </>
                     ) : (
                       <>
-                        Join Now – It's Free
+                        Join Now – It&apos;s Free
                         <ArrowRightIcon className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
                       </>
                     )}
