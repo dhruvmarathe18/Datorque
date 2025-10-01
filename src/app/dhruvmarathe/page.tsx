@@ -239,7 +239,7 @@ export default function DhruvMarathePage() {
                 </div>
                 <p className="text-sm sm:text-base text-gray-600">
                   Guiding emerging entrepreneurs through the complexities of building and scaling 
-                  technology startups in today's competitive market.
+                  technology startups in today&apos;s competitive market.
                 </p>
               </div>
               
