@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, Mail, Globe, Users, Mic, Code, Brain, Award } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -133,12 +134,13 @@ export default function DhruvMarathePage() {
               {/* Profile Image */}
               <div className="mb-6 sm:mb-8">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto rounded-full overflow-hidden shadow-2xl">
-                  <img
+                  <Image
                     src="/dhruv-marathe-profile.jpeg"
                     alt="Dhruv Marathe - Entrepreneur, Founder of DatorQue & Public Speaker"
                     className="w-full h-full object-cover"
                     width={128}
                     height={128}
+                    priority
                   />
                 </div>
               </div>
@@ -272,7 +274,7 @@ export default function DhruvMarathePage() {
                     <Award className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">TechCrunch Startup Battlefield India</p>
-                      <p className="text-xs sm:text-sm text-gray-600">Panel Discussion: "Future of AI in Indian Startups"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Panel Discussion: &ldquo;Future of AI in Indian Startups&rdquo;</p>
                     </div>
                   </div>
                   
@@ -280,7 +282,7 @@ export default function DhruvMarathePage() {
                     <Award className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">IIT Bombay Entrepreneurship Summit</p>
-                      <p className="text-xs sm:text-sm text-gray-600">Keynote: "Building Scalable Tech Companies"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Keynote: &ldquo;Building Scalable Tech Companies&rdquo;</p>
                     </div>
                   </div>
                   
@@ -288,7 +290,7 @@ export default function DhruvMarathePage() {
                     <Award className="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">NASSCOM Product Conclave</p>
-                      <p className="text-xs sm:text-sm text-gray-600">Workshop: "Digital Transformation Strategies"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Workshop: &ldquo;Digital Transformation Strategies&rdquo;</p>
                     </div>
                   </div>
                 </div>
@@ -301,7 +303,7 @@ export default function DhruvMarathePage() {
                     <Globe className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">Economic Times</p>
-                      <p className="text-xs sm:text-sm text-gray-600">"Rising Stars in Indian Tech Entrepreneurship"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">&ldquo;Rising Stars in Indian Tech Entrepreneurship&rdquo;</p>
                     </div>
                   </div>
                   
@@ -309,7 +311,7 @@ export default function DhruvMarathePage() {
                     <Globe className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">YourStory</p>
-                      <p className="text-xs sm:text-sm text-gray-600">"How DatorQue is Revolutionizing Web Development"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">&ldquo;How DatorQue is Revolutionizing Web Development&rdquo;</p>
                     </div>
                   </div>
                   
@@ -317,7 +319,7 @@ export default function DhruvMarathePage() {
                     <Globe className="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
                       <p className="font-medium text-gray-900 text-sm sm:text-base">Inc42</p>
-                      <p className="text-xs sm:text-sm text-gray-600">"Startup Spotlight: DatorQue's Growth Story"</p>
+                      <p className="text-xs sm:text-sm text-gray-600">&ldquo;Startup Spotlight: DatorQue&apos;s Growth Story&rdquo;</p>
                     </div>
                   </div>
                 </div>
@@ -330,11 +332,11 @@ export default function DhruvMarathePage() {
         <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 px-2">
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-2">
               Ready to transform your business with cutting-edge technology? 
-              Let's discuss how we can bring your vision to life.
+              Let&apos;s discuss how we can bring your vision to life.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
