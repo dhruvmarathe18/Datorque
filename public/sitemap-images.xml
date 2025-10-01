@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage Images -->
+  <url>
+    <loc>https://datorque.com/</loc>
+    <image:image>
+      <image:loc>https://datorque.com/og-image.jpg</image:loc>
+      <image:title>DatorQue - Premium Website Development</image:title>
+      <image:caption>Build faster, convert higher. DatorQue creates premium websites for Indian brands.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Portfolio Images -->
+  <url>
+    <loc>https://datorque.com/portfolio</loc>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/techstartup-preview.jpg</image:loc>
+      <image:title>Bangalore Real Estate Co - SaaS Platform</image:title>
+      <image:caption>Modern SaaS platform with real-time collaboration features and advanced analytics.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/fashion-preview.jpg</image:loc>
+      <image:title>Revive - The Elite Fitness - eCommerce</image:title>
+      <image:caption>Fitness eCommerce platform with mobile-first design and AR try-on features.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/healthcare-preview.jpg</image:loc>
+      <image:title>Dubai Beauty School - Healthcare Portal</image:title>
+      <image:caption>HIPAA-compliant patient portal with intuitive design and secure data handling.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/education-preview.jpg</image:loc>
+      <image:title>Oakridge International School - Education Platform</image:title>
+      <image:caption>Modern learning management system with video streaming and interactive features.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/restaurant-preview.jpg</image:loc>
+      <image:title>The Table - Restaurant Booking System</image:title>
+      <image:caption>Restaurant management system with real-time table availability and booking confirmations.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/fintech-preview.jpg</image:loc>
+      <image:title>Planet Entertainment - Events Platform</image:title>
+      <image:caption>Financial dashboard with real-time data visualization and portfolio management.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Dhruv Marathe Profile Images -->
+  <url>
+    <loc>https://datorque.com/dhruvmarathe</loc>
+    <image:image>
+      <image:loc>https://datorque.com/dhruv-marathe-profile.jpeg</image:loc>
+      <image:title>Dhruv Marathe - Entrepreneur, Founder of DatorQue & Public Speaker</image:title>
+      <image:caption>Dhruv Marathe - Entrepreneur, Public Speaker, and Founder of DatorQue. Expert in AI, web development, and digital transformation.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Webinar Images -->
+  <url>
+    <loc>https://datorque.com/webinar</loc>
+    <image:image>
+      <image:loc>https://datorque.com/v1.mp4</image:loc>
+      <image:title>Webinar Preview Video 1</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/v2.mp4</image:loc>
+      <image:title>Webinar Preview Video 2</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/v3.mp4</image:loc>
+      <image:title>Webinar Preview Video 3</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/v4.mp4</image:loc>
+      <image:title>Webinar Preview Video 4</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/v5.mp4</image:loc>
+      <image:title>Webinar Preview Video 5</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/v6.mp4</image:loc>
+      <image:title>Webinar Preview Video 6</image:title>
+    </image:image>
+  </url>
+
+</urlset>

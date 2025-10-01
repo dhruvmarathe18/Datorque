@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Main Sitemap -->
+  <sitemap>
+    <loc>https://datorque.com/sitemap.xml</loc>
+    <lastmod>2024-12-19T21:30:00+00:00</lastmod>
+  </sitemap>
+
+  <!-- Images Sitemap -->
+  <sitemap>
+    <loc>https://datorque.com/sitemap-images.xml</loc>
+    <lastmod>2024-12-19T21:30:00+00:00</lastmod>
+  </sitemap>
+
+  <!-- News Sitemap (for future blog/news content) -->
+  <sitemap>
+    <loc>https://datorque.com/sitemap-news.xml</loc>
+    <lastmod>2024-12-19T21:30:00+00:00</lastmod>
+  </sitemap>
+
+</sitemapindex>
