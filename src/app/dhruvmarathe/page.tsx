@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://datorque.com"),
   alternates: {
-    canonical: "/dhruvmarathe",
+    canonical: "https://datorque.com/dhruvmarathe",
   },
   icons: {
     icon: [

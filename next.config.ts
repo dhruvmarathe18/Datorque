@@ -22,6 +22,15 @@ const nextConfig: NextConfig = {
   httpAgentOptions: {
     keepAlive: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/dhruvmarathe/',
+        destination: '/dhruvmarathe',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
