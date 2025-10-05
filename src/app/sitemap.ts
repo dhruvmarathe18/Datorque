@@ -78,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/news/bitcoin-surges-record-125559-october-5`,
+      lastModified: new Date('2025-10-06').toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/news/kantara-chapter-1-grosses-235-crore-worldwide`,
       lastModified: new Date('2025-10-06').toISOString(),
       changeFrequency: 'weekly',

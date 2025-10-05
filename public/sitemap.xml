@@ -133,6 +133,19 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Bitcoin Surge Article -->
+  <url>
+    <loc>https://datorque.com/news/bitcoin-surges-record-125559-october-5</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://pbs.twimg.com/media/G2e8RnQXUAATLr1?format=png&amp;name=small</image:loc>
+      <image:title>Bitcoin Price Chart - New All-Time High $125,559</image:title>
+      <image:caption>Bitcoin achieves new all-time high of $125,559 on October 5, 2025, boosting market cap above $2.5 trillion.</image:caption>
+    </image:image>
+  </url>
+
   <!-- Kantara Chapter 1 Article -->
   <url>
     <loc>https://datorque.com/news/kantara-chapter-1-grosses-235-crore-worldwide</loc>

@@ -24,6 +24,18 @@ export const metadata: Metadata = {
 
 const newsArticles = [
   {
+    id: "bitcoin-surges-record-125559-october-5",
+    title: "Bitcoin Surges to Record $125,559 High on October 5",
+    excerpt: "Bitcoin achieved a new all-time high of $125,559 on October 5, 2025, boosting its market capitalization above $2.5 trillion and the total cryptocurrency market to $4.35 trillion.",
+    author: "Dhruv Marathe",
+    date: "2025-10-06",
+    readTime: "3 min read",
+    category: "Cryptocurrency",
+    trending: true,
+    image: "https://pbs.twimg.com/media/G2e8RnQXUAATLr1?format=png&name=small",
+    slug: "bitcoin-surges-record-125559-october-5"
+  },
+  {
     id: "kantara-chapter-1-grosses-235-crore-worldwide",
     title: "Kantara Chapter 1 Grosses Rs 235 Crore Worldwide in Three Days",
     excerpt: "Rishab Shetty's Kantara Chapter 1, released on October 2, 2025, has achieved Rs 162.85 crore net in India over its opening weekend and Rs 235 crore worldwide by day three, driven by strong word-of-mouth and festive demand.",
