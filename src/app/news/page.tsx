@@ -24,6 +24,18 @@ export const metadata: Metadata = {
 
 const newsArticles = [
   {
+    id: "india-women-crush-pakistan-88-runs-world-cup",
+    title: "India Women Crush Pakistan by 88 Runs in World Cup Clash Marred by Toss and Run-Out Disputes",
+    excerpt: "India's women's cricket team defeated Pakistan by 88 runs in their ICC Women's World Cup 2025 group-stage match at Colombo's R. Premadasa Stadium, with captain Harmanpreet Kaur scoring a half-century.",
+    author: "Dhruv Marathe",
+    date: "2025-10-06",
+    readTime: "3 min read",
+    category: "Sports",
+    trending: true,
+    image: "https://pbs.twimg.com/media/G2fuYoaW0AAEhQR?format=jpg&name=medium",
+    slug: "india-women-crush-pakistan-88-runs-world-cup"
+  },
+  {
     id: "elon-musk-netflix-boycott-transgender-themes",
     title: "Elon Musk Calls for Netflix Boycott Over Transgender Themes in Kids' Shows",
     excerpt: "Elon Musk has posted over 26 times on X since October 1, urging his 227 million followers to cancel Netflix subscriptions due to transgender characters and themes in children's programming.",
