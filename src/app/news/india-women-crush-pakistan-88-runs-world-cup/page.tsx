@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Calendar, User, ArrowLeft, Share2, TrendingUp, Clock, Tag, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "🏏 India Women Crush Pakistan by 88 Runs in World Cup Clash Marred by Controversies | DatorQue Sports",
-  description: "BREAKING: India's women's cricket team defeats Pakistan by 88 runs in ICC Women's World Cup 2025. Harmanpreet Kaur's half-century leads India to 247, while controversies over toss disputes and run-out decisions mar the match. Full analysis inside.",
+  title: "🏏 India Women Crush Pakistan by 88 Runs in World Cup Clash | DatorQue Digital Solutions",
+  description: "BREAKING: India's women's cricket team defeats Pakistan by 88 runs in ICC Women's World Cup 2025. Learn how DatorQue's digital solutions help sports businesses build winning strategies. Read more & get your digital transformation consultation!",
   keywords: [
     "India women cricket",
     "Pakistan women cricket",
@@ -18,7 +18,10 @@ export const metadata: Metadata = {
     "Colombo R Premadasa Stadium",
     "women's ODI",
     "cricket news",
-    "Dhruv Marathe"
+    "Dhruv Marathe",
+    "sports websites",
+    "digital transformation",
+    "web development"
   ],
   authors: [{ name: "Dhruv Marathe" }],
   creator: "Dhruv Marathe",
@@ -251,7 +254,7 @@ export default function CricketNewsArticle() {
                   </p>
                   
                   <p>
-                    The match at Colombo&apos;s R. Premadasa Stadium showcased the growing competitiveness of women&apos;s cricket while highlighting the need for improved communication and decision-making protocols in international matches.
+                    The match at Colombo&apos;s R. Premadasa Stadium showcased the growing competitiveness of women&apos;s cricket while highlighting the need for improved communication and decision-making protocols in international matches. Sports organizations can leverage <Link href="/services" className="text-blue-600 hover:text-blue-800 underline">modern web development and digital transformation</Link> solutions to enhance their operations and fan engagement.
                   </p>
                   
                   <div className="bg-blue-50 border-l-4 border-blue-500 p-6 my-8">
@@ -261,7 +264,35 @@ export default function CricketNewsArticle() {
                       <li>• Harmanpreet Kaur&apos;s leadership crucial in high-pressure situations</li>
                       <li>• Cricket controversies highlight need for better protocols</li>
                       <li>• Women&apos;s cricket continues to grow in intensity and quality</li>
+                      <li>• <Link href="/dhruvmarathe" className="text-blue-600 hover:text-blue-800 underline">Innovative leadership</Link> drives success in competitive environments</li>
                     </ul>
+                  </div>
+                </div>
+                
+                {/* CTA Section */}
+                <div className="mt-12 pt-8 border-t border-gray-200 bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8">
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Ready to Build Your Winning Digital Strategy?
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                      Just like India&apos;s cricket team&apos;s strategic victory, your business can achieve dominance with the right <strong>web development and digital transformation</strong> approach. Let DatorQue help you build your digital presence.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Link
+                        href="/services"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl"
+                      >
+                        Explore Our Digital Solutions
+                        <ArrowLeft className="w-5 h-5 ml-2 rotate-180" />
+                      </Link>
+                      <Link
+                        href="/dhruvmarathe"
+                        className="inline-flex items-center justify-center px-8 py-4 border-2 border-green-600 text-green-600 font-semibold rounded-xl hover:bg-green-600 hover:text-white transition-colors"
+                      >
+                        Meet Our Founder
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 

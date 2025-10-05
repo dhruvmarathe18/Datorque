@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Calendar, User, ArrowLeft, Share2, TrendingUp, Clock, Tag, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "🎬 Kantara Chapter 1 Grosses Rs 235 Crore Worldwide in Three Days | DatorQue Entertainment",
-  description: "BREAKING: Rishab Shetty's Kantara Chapter 1 achieves Rs 162.85 crore net in India and Rs 235 crore worldwide in just three days. The film rooted in coastal Karnataka's tribal folklore has created a box office storm with strong word-of-mouth and festive demand.",
+  title: "🎬 Kantara Chapter 1 Grosses Rs 235 Crore Worldwide in Three Days | DatorQue Web Solutions",
+  description: "BREAKING: Rishab Shetty's Kantara Chapter 1 achieves Rs 162.85 crore net in India and Rs 235 crore worldwide in just three days. Learn how DatorQue's web development solutions help entertainment businesses scale. Read more & get your digital strategy consultation!",
   keywords: [
     "Kantara Chapter 1",
     "Rishab Shetty",
@@ -19,7 +19,10 @@ export const metadata: Metadata = {
     "film industry",
     "Ram Gopal Varma",
     "Anupam Kher",
-    "Dhruv Marathe"
+    "Dhruv Marathe",
+    "web development",
+    "digital marketing",
+    "entertainment websites"
   ],
   authors: [{ name: "Dhruv Marathe" }],
   creator: "Dhruv Marathe",
@@ -241,7 +244,7 @@ export default function KantaraNewsArticle() {
                   </p>
                   
                   <p>
-                    Rishab Shetty&apos;s vision of bringing regional stories to mainstream audiences has paid off spectacularly, proving that authentic storytelling and cultural representation can achieve both critical acclaim and commercial success.
+                    Rishab Shetty&apos;s vision of bringing regional stories to mainstream audiences has paid off spectacularly, proving that authentic storytelling and cultural representation can achieve both critical acclaim and commercial success. Entertainment businesses can leverage similar strategies with <Link href="/services" className="text-blue-600 hover:text-blue-800 underline">professional web development and digital marketing</Link> solutions to reach global audiences.
                   </p>
                   
                   <div className="bg-purple-50 border-l-4 border-purple-500 p-6 my-8">
@@ -261,8 +264,35 @@ export default function KantaraNewsArticle() {
                   </p>
                   
                   <p>
-                    The combination of strong storytelling, cultural authenticity, and stellar performances has created a winning formula that other filmmakers are likely to study and emulate in the future.
+                    The combination of strong storytelling, cultural authenticity, and stellar performances has created a winning formula that other filmmakers are likely to study and emulate in the future. Just as <Link href="/dhruvmarathe" className="text-blue-600 hover:text-blue-800 underline">innovative entrepreneurs and founders</Link> drive success in entertainment, the same principles apply to building successful digital businesses.
                   </p>
+                </div>
+                
+                {/* CTA Section */}
+                <div className="mt-12 pt-8 border-t border-gray-200 bg-gradient-to-r from-purple-50 to-orange-50 rounded-2xl p-8">
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Ready to Scale Your Entertainment Business?
+                    </h3>
+                    <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+                      Just like Kantara&apos;s record-breaking success, your entertainment business can achieve global reach with the right <strong>web development and digital marketing</strong> strategy. Let DatorQue help you build your digital presence.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Link
+                        href="/services"
+                        className="inline-flex items-center justify-center px-8 py-4 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl"
+                      >
+                        Explore Our Web Solutions
+                        <ArrowLeft className="w-5 h-5 ml-2 rotate-180" />
+                      </Link>
+                      <Link
+                        href="/dhruvmarathe"
+                        className="inline-flex items-center justify-center px-8 py-4 border-2 border-purple-600 text-purple-600 font-semibold rounded-xl hover:bg-purple-600 hover:text-white transition-colors"
+                      >
+                        Meet Our Founder
+                      </Link>
+                    </div>
+                  </div>
                 </div>
                 
                 {/* Author Bio */}

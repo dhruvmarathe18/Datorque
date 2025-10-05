@@ -108,9 +108,12 @@ export default function NewsPage() {
               <article key={article.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
                 <div className="p-6 sm:p-8">
                   <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <Link 
+                      href={`/news?category=${article.category.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors"
+                    >
                       {article.category}
-                    </span>
+                    </Link>
                     {article.trending && (
                       <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
                         <TrendingUp className="w-3 h-3" />
