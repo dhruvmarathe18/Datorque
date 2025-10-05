@@ -78,6 +78,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/news/kantara-chapter-1-grosses-235-crore-worldwide`,
+      lastModified: new Date('2025-10-06').toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/news/india-women-crush-pakistan-88-runs-world-cup`,
       lastModified: new Date('2025-10-06').toISOString(),
       changeFrequency: 'weekly',

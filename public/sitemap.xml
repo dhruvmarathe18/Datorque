@@ -133,6 +133,19 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Kantara Chapter 1 Article -->
+  <url>
+    <loc>https://datorque.com/news/kantara-chapter-1-grosses-235-crore-worldwide</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://pbs.twimg.com/media/G2flY3qbsAAtP2v?format=jpg&amp;name=large</image:loc>
+      <image:title>Kantara Chapter 1 - Rishab Shetty's Blockbuster Film</image:title>
+      <image:caption>Rishab Shetty's Kantara Chapter 1 grosses Rs 235 crore worldwide in just three days, breaking box office records.</image:caption>
+    </image:image>
+  </url>
+
   <!-- India Women Cricket Article -->
   <url>
     <loc>https://datorque.com/news/india-women-crush-pakistan-88-runs-world-cup</loc>

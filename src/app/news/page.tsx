@@ -24,6 +24,18 @@ export const metadata: Metadata = {
 
 const newsArticles = [
   {
+    id: "kantara-chapter-1-grosses-235-crore-worldwide",
+    title: "Kantara Chapter 1 Grosses Rs 235 Crore Worldwide in Three Days",
+    excerpt: "Rishab Shetty's Kantara Chapter 1, released on October 2, 2025, has achieved Rs 162.85 crore net in India over its opening weekend and Rs 235 crore worldwide by day three, driven by strong word-of-mouth and festive demand.",
+    author: "Dhruv Marathe",
+    date: "2025-10-06",
+    readTime: "3 min read",
+    category: "Entertainment",
+    trending: true,
+    image: "https://pbs.twimg.com/media/G2flY3qbsAAtP2v?format=jpg&name=large",
+    slug: "kantara-chapter-1-grosses-235-crore-worldwide"
+  },
+  {
     id: "india-women-crush-pakistan-88-runs-world-cup",
     title: "India Women Crush Pakistan by 88 Runs in World Cup Clash Marred by Toss and Run-Out Disputes",
     excerpt: "India's women's cricket team defeated Pakistan by 88 runs in their ICC Women's World Cup 2025 group-stage match at Colombo's R. Premadasa Stadium, with captain Harmanpreet Kaur scoring a half-century.",
