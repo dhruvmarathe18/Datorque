@@ -71,5 +71,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.2,
     },
+    {
+      url: `${baseUrl}/news`,
+      lastModified: currentDate,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/news/elon-musk-netflix-boycott-transgender-themes`,
+      lastModified: new Date('2025-10-07').toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ]
 }

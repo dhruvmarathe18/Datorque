@@ -125,4 +125,25 @@
     <priority>0.2</priority>
   </url>
 
+  <!-- News Section -->
+  <url>
+    <loc>https://datorque.com/news</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Elon Musk Netflix Article -->
+  <url>
+    <loc>https://datorque.com/news/elon-musk-netflix-boycott-transgender-themes</loc>
+    <lastmod>2025-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://datorque.com/news/elon-musk-netflix-og.jpg</image:loc>
+      <image:title>Elon Musk Netflix Boycott Campaign - $15B Market Value Lost</image:title>
+      <image:caption>Breaking news about Elon Musk's viral campaign against Netflix causing massive stock drop and controversy.</image:caption>
+    </image:image>
+  </url>
+
 </urlset>

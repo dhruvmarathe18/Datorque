@@ -100,7 +100,8 @@ const structuredData = {
   "sameAs": [
     "https://linkedin.com/in/dhruvmarathe",
     "https://github.com/dhruvmarathe",
-    "https://twitter.com/dhruvmarathe"
+    "https://twitter.com/dhruvmarathe",
+    "https://instagram.com/dhruvmarathe"
   ],
   "knowsAbout": [
     "Web Development",
