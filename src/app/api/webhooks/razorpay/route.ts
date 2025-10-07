@@ -68,8 +68,8 @@ async function handleSubscriptionActivated(subscription: any, instituteId: strin
       p_institute_id: instituteId,
       p_status: 'trialing',
       p_subscription_id: subscription.id,
-      p_trial_end_date: new Date(subscription.expire_by * 1000).toISOString(),
-      p_next_billing_date: new Date(subscription.next_charge_at * 1000).toISOString()
+      p_trial_end_date: subscription.expire_by ? new Date(subscription.expire_by * 1000).toISOString() : null,
+      p_next_billing_date: subscription.next_charge_at ? new Date(subscription.next_charge_at * 1000).toISOString() : null
     });
 
     if (instituteError) {
@@ -105,7 +105,9 @@ async function handleSubscriptionCharged(subscription: any, instituteId: string)
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
       p_status: 'active',
-      p_next_billing_date: new Date(subscription.next_charge_at * 1000).toISOString()
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: subscription.next_charge_at ? new Date(subscription.next_charge_at * 1000).toISOString() : null
     });
 
     if (instituteError) {
@@ -156,7 +158,10 @@ async function handleSubscriptionFailed(subscription: any, instituteId: string) 
     // Update institute status to failed
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
-      p_status: 'failed'
+      p_status: 'failed',
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: null
     });
 
     if (instituteError) {
@@ -194,7 +199,10 @@ async function handleSubscriptionCancelled(subscription: any, instituteId: strin
     // Update institute status to cancelled
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
-      p_status: 'cancelled'
+      p_status: 'cancelled',
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: null
     });
 
     if (instituteError) {
@@ -229,7 +237,10 @@ async function handleSubscriptionExpired(subscription: any, instituteId: string)
     // Update institute status to expired
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
-      p_status: 'expired'
+      p_status: 'expired',
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: null
     });
 
     if (instituteError) {
@@ -264,7 +275,10 @@ async function handleSubscriptionHalted(subscription: any, instituteId: string) 
     // Update institute status to paused
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
-      p_status: 'paused'
+      p_status: 'paused',
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: null
     });
 
     if (instituteError) {
@@ -299,7 +313,10 @@ async function handleSubscriptionCompleted(subscription: any, instituteId: strin
     // Update institute status to completed
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
       p_institute_id: instituteId,
-      p_status: 'completed'
+      p_status: 'completed',
+      p_subscription_id: null,
+      p_trial_end_date: null,
+      p_next_billing_date: null
     });
 
     if (instituteError) {

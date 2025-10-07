@@ -1,15 +1,30 @@
 -- Razorpay Webhook System Database Setup
 -- Run this script in your Supabase SQL editor
+-- 
+-- SAFETY FEATURES:
+-- - Uses IF NOT EXISTS for tables and columns
+-- - Drops existing triggers/policies before recreating
+-- - Wraps grants in exception handling
+-- - Checks for table existence before altering
+-- - Safe to run multiple times without errors
 
 -- 1. Add subscription-related columns to institutes table
-ALTER TABLE institutes 
-ADD COLUMN IF NOT EXISTS plan_type VARCHAR(20) DEFAULT 'standard',
-ADD COLUMN IF NOT EXISTS subscription_status VARCHAR(50) DEFAULT 'active',
-ADD COLUMN IF NOT EXISTS trial_days INTEGER DEFAULT 0,
-ADD COLUMN IF NOT EXISTS subscription_amount DECIMAL(10,2) DEFAULT 0,
-ADD COLUMN IF NOT EXISTS trial_end_date TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS next_billing_date TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS subscription_id VARCHAR(255);
+-- Check if institutes table exists first
+DO $$
+BEGIN
+  IF EXISTS (SELECT 1 FROM information_schema.tables WHERE table_name = 'institutes') THEN
+    ALTER TABLE institutes 
+    ADD COLUMN IF NOT EXISTS plan_type VARCHAR(20) DEFAULT 'standard',
+    ADD COLUMN IF NOT EXISTS subscription_status VARCHAR(50) DEFAULT 'active',
+    ADD COLUMN IF NOT EXISTS trial_days INTEGER DEFAULT 0,
+    ADD COLUMN IF NOT EXISTS subscription_amount DECIMAL(10,2) DEFAULT 0,
+    ADD COLUMN IF NOT EXISTS trial_end_date TIMESTAMP WITH TIME ZONE,
+    ADD COLUMN IF NOT EXISTS next_billing_date TIMESTAMP WITH TIME ZONE,
+    ADD COLUMN IF NOT EXISTS subscription_id VARCHAR(255);
+  ELSE
+    RAISE NOTICE 'institutes table does not exist, skipping column additions';
+  END IF;
+END $$;
 
 -- 2. Create subscriptions table
 CREATE TABLE IF NOT EXISTS subscriptions (
@@ -85,18 +100,18 @@ CREATE INDEX IF NOT EXISTS idx_institutes_subscription_id ON institutes(subscrip
 CREATE OR REPLACE FUNCTION update_institute_subscription_status(
   p_institute_id UUID,
   p_status VARCHAR(50),
-  p_subscription_id VARCHAR(255) DEFAULT NULL,
-  p_trial_end_date TIMESTAMP WITH TIME ZONE DEFAULT NULL,
-  p_next_billing_date TIMESTAMP WITH TIME ZONE DEFAULT NULL
+  p_subscription_id VARCHAR(255),
+  p_trial_end_date TIMESTAMP WITH TIME ZONE,
+  p_next_billing_date TIMESTAMP WITH TIME ZONE
 )
 RETURNS VOID AS $$
 BEGIN
   UPDATE institutes 
   SET 
     subscription_status = p_status,
-    subscription_id = COALESCE(p_subscription_id, subscription_id),
-    trial_end_date = COALESCE(p_trial_end_date, trial_end_date),
-    next_billing_date = COALESCE(p_next_billing_date, next_billing_date),
+    subscription_id = CASE WHEN p_subscription_id IS NOT NULL THEN p_subscription_id ELSE subscription_id END,
+    trial_end_date = CASE WHEN p_trial_end_date IS NOT NULL THEN p_trial_end_date ELSE trial_end_date END,
+    next_billing_date = CASE WHEN p_next_billing_date IS NOT NULL THEN p_next_billing_date ELSE next_billing_date END,
     updated_at = NOW()
   WHERE id = p_institute_id;
   
@@ -129,11 +144,11 @@ CREATE OR REPLACE FUNCTION create_subscription_record(
   p_trial_start_date TIMESTAMP WITH TIME ZONE,
   p_trial_end_date TIMESTAMP WITH TIME ZONE,
   p_total_count INTEGER,
-  p_paid_count INTEGER DEFAULT 0,
+  p_paid_count INTEGER,
   p_remaining_count INTEGER,
   p_next_charge_at TIMESTAMP WITH TIME ZONE,
-  p_short_url TEXT DEFAULT NULL,
-  p_notes JSONB DEFAULT NULL
+  p_short_url TEXT,
+  p_notes JSONB
 )
 RETURNS UUID AS $$
 DECLARE
@@ -258,7 +273,8 @@ ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE subscription_payments ENABLE ROW LEVEL SECURITY;
 ALTER TABLE webhook_events ENABLE ROW LEVEL SECURITY;
 
--- Policy for subscriptions - institutes can only see their own subscriptions
+-- Drop existing policies if they exist, then create new ones
+DROP POLICY IF EXISTS "Institutes can view their own subscriptions" ON subscriptions;
 CREATE POLICY "Institutes can view their own subscriptions" ON subscriptions
   FOR SELECT USING (
     institute_id IN (
@@ -266,7 +282,7 @@ CREATE POLICY "Institutes can view their own subscriptions" ON subscriptions
     )
   );
 
--- Policy for subscription payments - institutes can only see payments for their subscriptions
+DROP POLICY IF EXISTS "Institutes can view their subscription payments" ON subscription_payments;
 CREATE POLICY "Institutes can view their subscription payments" ON subscription_payments
   FOR SELECT USING (
     subscription_id IN (
@@ -276,7 +292,7 @@ CREATE POLICY "Institutes can view their subscription payments" ON subscription_
     )
   );
 
--- Policy for webhook events - only service role can access
+DROP POLICY IF EXISTS "Service role can access webhook events" ON webhook_events;
 CREATE POLICY "Service role can access webhook events" ON webhook_events
   FOR ALL USING (auth.role() = 'service_role');
 
@@ -289,6 +305,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+-- Drop trigger if it exists, then create it
+DROP TRIGGER IF EXISTS update_subscriptions_updated_at ON subscriptions;
 CREATE TRIGGER update_subscriptions_updated_at
   BEFORE UPDATE ON subscriptions
   FOR EACH ROW
@@ -323,10 +341,34 @@ LEFT JOIN subscriptions s ON i.id = s.institute_id
 WHERE i.subscription_id IS NOT NULL;
 
 -- 14. Grant necessary permissions
-GRANT SELECT ON subscription_dashboard TO authenticated;
-GRANT EXECUTE ON FUNCTION get_institute_subscription(UUID) TO authenticated;
-GRANT EXECUTE ON FUNCTION get_subscription_payments(UUID) TO authenticated;
-GRANT EXECUTE ON FUNCTION has_active_subscription(UUID) TO authenticated;
+-- Grant permissions only if they don't already exist
+DO $$
+BEGIN
+  -- Grant permissions safely
+  BEGIN
+    GRANT SELECT ON subscription_dashboard TO authenticated;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Could not grant SELECT on subscription_dashboard: %', SQLERRM;
+  END;
+  
+  BEGIN
+    GRANT EXECUTE ON FUNCTION get_institute_subscription(UUID) TO authenticated;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Could not grant EXECUTE on get_institute_subscription: %', SQLERRM;
+  END;
+  
+  BEGIN
+    GRANT EXECUTE ON FUNCTION get_subscription_payments(UUID) TO authenticated;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Could not grant EXECUTE on get_subscription_payments: %', SQLERRM;
+  END;
+  
+  BEGIN
+    GRANT EXECUTE ON FUNCTION has_active_subscription(UUID) TO authenticated;
+  EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'Could not grant EXECUTE on has_active_subscription: %', SQLERRM;
+  END;
+END $$;
 
 -- 15. Insert sample data for testing (optional - remove in production)
 -- INSERT INTO institutes (id, name, email, subscription_status) 

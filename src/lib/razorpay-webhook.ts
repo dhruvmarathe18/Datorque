@@ -189,8 +189,8 @@ export async function createSubscriptionRecord(
         p_paid_count: paidCount,
         p_remaining_count: remainingCount,
         p_next_charge_at: nextChargeAt.toISOString(),
-        p_short_url: shortUrl,
-        p_notes: notes
+        p_short_url: shortUrl || null,
+        p_notes: notes || null
       });
 
     if (error) {
@@ -218,9 +218,9 @@ export async function updateInstituteSubscriptionStatus(
       .rpc('update_institute_subscription_status', {
         p_institute_id: instituteId,
         p_status: status,
-        p_subscription_id: subscriptionId,
-        p_trial_end_date: trialEndDate?.toISOString(),
-        p_next_billing_date: nextBillingDate?.toISOString()
+        p_subscription_id: subscriptionId || null,
+        p_trial_end_date: trialEndDate?.toISOString() || null,
+        p_next_billing_date: nextBillingDate?.toISOString() || null
       });
 
     if (error) {
