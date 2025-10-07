@@ -24,7 +24,7 @@ export interface RazorpaySubscription {
   current_end: number;
   ended_at: number | null;
   quantity: number;
-  notes: Record<string, any>;
+  notes: Record<string, unknown>;
   charge_at: number;
   start_at: number;
   end_at: number;
@@ -49,10 +49,11 @@ export interface WebhookEventLog {
   event_type: string;
   entity_type: string;
   entity_id: string;
-  payload: any;
+  payload: Record<string, unknown>;
   signature?: string;
   processed: boolean;
   processing_error?: string;
+  created_at: string;
 }
 
 // Log webhook event
@@ -172,7 +173,7 @@ export async function createSubscriptionRecord(
   remainingCount: number,
   nextChargeAt: Date,
   shortUrl?: string,
-  notes?: Record<string, any>
+  notes?: Record<string, unknown>
 ): Promise<string> {
   try {
     const { data, error } = await supabase
@@ -341,13 +342,14 @@ export function mapRazorpayStatusToInternal(razorpayStatus: string): string {
 }
 
 // Utility function to validate webhook event
-export function validateWebhookEvent(event: any): boolean {
+export function validateWebhookEvent(event: Record<string, unknown>): boolean {
+  const entity = event.entity as Record<string, unknown> | undefined;
   return !!(
     event &&
     event.id &&
     event.event &&
     event.contains &&
-    event.entity &&
-    event.entity.id
+    entity &&
+    entity.id
   );
 }

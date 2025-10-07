@@ -3,7 +3,7 @@ import { getWebhookEvents, getSubscriptionDashboard } from '@/lib/razorpay-webho
 import { validateConfig } from '@/config/razorpay-webhook';
 
 // Test endpoint to verify webhook system
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     // Validate configuration
     const configValidation = validateConfig();

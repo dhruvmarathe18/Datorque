@@ -20,7 +20,7 @@ export interface CreateSubscriptionParams {
 
 export interface SubscriptionStatus {
   instituteId: string;
-  status: 'active' | 'trialing' | 'cancelled' | 'expired' | 'failed' | 'paused';
+  status: 'active' | 'trialing' | 'cancelled' | 'expired' | 'failed' | 'paused' | 'completed';
   trialEndDate?: string;
   nextBillingDate?: string;
   subscriptionId?: string;
@@ -41,7 +41,6 @@ export async function createRazorpaySubscription(params: CreateSubscriptionParam
   // Calculate dates
   const now = Math.floor(Date.now() / 1000);
   const trialEndTime = now + (trialDays * 24 * 60 * 60);
-  const subscriptionEndTime = now + (365 * 24 * 60 * 60); // 1 year
 
   const subscriptionParams = {
     plan_id: planId,
@@ -100,7 +99,6 @@ export async function getSubscriptionStatus(instituteId: string): Promise<Subscr
 
     const now = new Date();
     const trialEndDate = data.trial_end_date ? new Date(data.trial_end_date) : null;
-    const nextBillingDate = data.next_billing_date ? new Date(data.next_billing_date) : null;
 
     // Determine if subscription is active
     const isActive = (
@@ -111,12 +109,12 @@ export async function getSubscriptionStatus(instituteId: string): Promise<Subscr
 
     return {
       instituteId: data.id,
-      status: data.subscription_status as any,
+      status: data.subscription_status as 'active' | 'trialing' | 'cancelled' | 'expired' | 'failed' | 'paused' | 'completed',
       trialEndDate: data.trial_end_date,
       nextBillingDate: data.next_billing_date,
       subscriptionId: data.subscription_id,
       planType: data.plan_type,
-      isActive
+      isActive: !!isActive
     };
   } catch (error) {
     console.error('Error in getSubscriptionStatus:', error);
@@ -174,7 +172,7 @@ export async function getSubscriptionDetails(instituteId: string) {
 export async function updateMobileAppSubscription(
   instituteId: string,
   status: string,
-  additionalData?: any
+  additionalData?: Record<string, unknown>
 ) {
   try {
     // This would typically send a push notification or update to the mobile app
@@ -222,24 +220,26 @@ export function getWebhookConfiguration() {
 }
 
 // Validate subscription before processing
-export function validateSubscriptionData(subscription: any): boolean {
+export function validateSubscriptionData(subscription: Record<string, unknown>): boolean {
   const requiredFields = ['id', 'plan_id', 'status', 'notes'];
   const hasRequiredFields = requiredFields.every(field => subscription[field]);
   
-  const hasInstituteId = subscription.notes?.institute_id;
+  const notes = subscription.notes as Record<string, unknown> | undefined;
+  const hasInstituteId = !!notes?.institute_id;
   
   return hasRequiredFields && hasInstituteId;
 }
 
 // Format subscription data for mobile app
-export function formatSubscriptionForMobile(subscription: any) {
+export function formatSubscriptionForMobile(subscription: Record<string, unknown>) {
+  const notes = subscription.notes as Record<string, unknown> | undefined;
   return {
     id: subscription.id,
     status: subscription.status,
     planId: subscription.plan_id,
-    instituteId: subscription.notes?.institute_id,
-    trialEndDate: subscription.expire_by ? new Date(subscription.expire_by * 1000) : null,
-    nextBillingDate: subscription.next_charge_at ? new Date(subscription.next_charge_at * 1000) : null,
+    instituteId: notes?.institute_id,
+    trialEndDate: subscription.expire_by ? new Date((subscription.expire_by as number) * 1000) : null,
+    nextBillingDate: subscription.charge_at ? new Date((subscription.charge_at as number) * 1000) : null,
     totalCycles: subscription.total_count,
     paidCycles: subscription.paid_count,
     remainingCycles: subscription.remaining_count,

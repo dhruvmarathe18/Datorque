@@ -2,6 +2,45 @@ import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { createClient } from '@supabase/supabase-js';
 
+// Types for webhook events
+interface RazorpayWebhookEvent {
+  id: string;
+  event: string;
+  contains: string[];
+  created_at: number;
+  entity: RazorpaySubscription;
+  signature?: string;
+}
+
+interface RazorpaySubscription {
+  id: string;
+  entity: string;
+  plan_id: string;
+  status: string;
+  current_start: number;
+  current_end: number;
+  ended_at: number | null;
+  quantity: number;
+  notes: Record<string, unknown>;
+  charge_at: number;
+  start_at: number;
+  end_at: number;
+  auth_attempts: number;
+  total_count: number;
+  paid_count: number;
+  customer_notify: boolean;
+  created_at: number;
+  expire_by: number;
+  short_url: string;
+  has_scheduled_changes: boolean;
+  change_scheduled_at: number | null;
+  source: string;
+  offer_id: string | null;
+  remaining_count: number;
+  amount: number;
+  currency: string;
+}
+
 // Initialize Supabase client with service role key for admin operations
 const supabase = createClient(
   process.env.DATABASE_URL!,
@@ -19,15 +58,15 @@ function verifyWebhookSignature(payload: string, signature: string, secret: stri
 }
 
 // Log webhook event for debugging and audit
-async function logWebhookEvent(event: any) {
+async function logWebhookEvent(event: RazorpayWebhookEvent) {
   try {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('webhook_events')
       .insert({
         event_id: event.id,
         event_type: event.event,
         entity_type: event.entity,
-        entity_id: event.entity_id,
+        entity_id: event.entity.id,
         payload: event,
         signature: event.signature || null,
         processed: false
@@ -61,7 +100,7 @@ async function markWebhookEventProcessed(eventId: string, error?: string) {
 }
 
 // Handle subscription activated event
-async function handleSubscriptionActivated(subscription: any, instituteId: string) {
+async function handleSubscriptionActivated(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to trialing
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -69,7 +108,7 @@ async function handleSubscriptionActivated(subscription: any, instituteId: strin
       p_status: 'trialing',
       p_subscription_id: subscription.id,
       p_trial_end_date: subscription.expire_by ? new Date(subscription.expire_by * 1000).toISOString() : null,
-      p_next_billing_date: subscription.next_charge_at ? new Date(subscription.next_charge_at * 1000).toISOString() : null
+      p_next_billing_date: subscription.charge_at ? new Date(subscription.charge_at * 1000).toISOString() : null
     });
 
     if (instituteError) {
@@ -99,7 +138,7 @@ async function handleSubscriptionActivated(subscription: any, instituteId: strin
 }
 
 // Handle subscription charged event
-async function handleSubscriptionCharged(subscription: any, instituteId: string) {
+async function handleSubscriptionCharged(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to active
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -107,7 +146,7 @@ async function handleSubscriptionCharged(subscription: any, instituteId: string)
       p_status: 'active',
       p_subscription_id: null,
       p_trial_end_date: null,
-      p_next_billing_date: subscription.next_charge_at ? new Date(subscription.next_charge_at * 1000).toISOString() : null
+      p_next_billing_date: subscription.charge_at ? new Date(subscription.charge_at * 1000).toISOString() : null
     });
 
     if (instituteError) {
@@ -153,7 +192,7 @@ async function handleSubscriptionCharged(subscription: any, instituteId: string)
 }
 
 // Handle subscription failed event
-async function handleSubscriptionFailed(subscription: any, instituteId: string) {
+async function handleSubscriptionFailed(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to failed
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -194,7 +233,7 @@ async function handleSubscriptionFailed(subscription: any, instituteId: string) 
 }
 
 // Handle subscription cancelled event
-async function handleSubscriptionCancelled(subscription: any, instituteId: string) {
+async function handleSubscriptionCancelled(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to cancelled
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -232,7 +271,7 @@ async function handleSubscriptionCancelled(subscription: any, instituteId: strin
 }
 
 // Handle subscription expired event
-async function handleSubscriptionExpired(subscription: any, instituteId: string) {
+async function handleSubscriptionExpired(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to expired
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -270,7 +309,7 @@ async function handleSubscriptionExpired(subscription: any, instituteId: string)
 }
 
 // Handle subscription halted event
-async function handleSubscriptionHalted(subscription: any, instituteId: string) {
+async function handleSubscriptionHalted(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to paused
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -308,7 +347,7 @@ async function handleSubscriptionHalted(subscription: any, instituteId: string) 
 }
 
 // Handle subscription completed event
-async function handleSubscriptionCompleted(subscription: any, instituteId: string) {
+async function handleSubscriptionCompleted(subscription: RazorpaySubscription, instituteId: string) {
   try {
     // Update institute status to completed
     const { error: instituteError } = await supabase.rpc('update_institute_subscription_status', {
@@ -346,7 +385,7 @@ async function handleSubscriptionCompleted(subscription: any, instituteId: strin
 }
 
 // Process webhook event based on event type
-async function processWebhookEvent(event: any) {
+async function processWebhookEvent(event: RazorpayWebhookEvent) {
   const { event: eventType, contains } = event;
   const subscription = event.entity;
 
@@ -357,7 +396,7 @@ async function processWebhookEvent(event: any) {
   }
 
   // Extract institute_id from subscription notes
-  const instituteId = subscription.notes?.institute_id;
+  const instituteId = subscription.notes?.institute_id as string;
   if (!instituteId) {
     console.error('No institute_id found in subscription notes');
     throw new Error('No institute_id found in subscription notes');
@@ -463,7 +502,7 @@ export async function POST(request: NextRequest) {
 }
 
 // Handle OPTIONS request for CORS
-export async function OPTIONS(request: NextRequest) {
+export async function OPTIONS() {
   return new NextResponse(null, {
     status: 200,
     headers: {
