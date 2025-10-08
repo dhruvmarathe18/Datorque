@@ -101,5 +101,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/news/anthropic-opens-india-office-2026-ai-demand`,
+      lastModified: new Date('2025-10-08').toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/news/india-biometric-authentication-digital-payments-october-8`,
+      lastModified: new Date('2025-10-08').toISOString(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
   ]
 }

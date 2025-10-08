@@ -54,7 +54,7 @@ export async function createRazorpaySubscription(params: CreateSubscriptionParam
       trial_type: 'Free trial for coaching management',
       billing_cycles: totalCycles.toString(),
       trial_days: trialDays.toString(),
-      webhook_url: process.env.NEXT_PUBLIC_BASE_URL + '/api/webhooks/razorpay'
+      webhook_url: (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay'
     }
   };
 
@@ -63,7 +63,7 @@ export async function createRazorpaySubscription(params: CreateSubscriptionParam
   return {
     success: true,
     subscriptionParams,
-    webhookUrl: process.env.NEXT_PUBLIC_BASE_URL + '/api/webhooks/razorpay',
+    webhookUrl: (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay',
     instructions: {
       step1: 'Use these parameters to create subscription via Razorpay API',
       step2: 'Configure webhook URL in Razorpay dashboard',
@@ -199,7 +199,7 @@ export async function updateMobileAppSubscription(
 // Get webhook configuration for mobile app setup
 export function getWebhookConfiguration() {
   return {
-    webhookUrl: process.env.NEXT_PUBLIC_BASE_URL + '/api/webhooks/razorpay',
+    webhookUrl: (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay',
     supportedEvents: [
       'subscription.activated',
       'subscription.charged',

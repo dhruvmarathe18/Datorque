@@ -3,7 +3,7 @@
 
 export const razorpayConfig = {
   // Webhook endpoint URL
-  webhookUrl: process.env.NEXT_PUBLIC_BASE_URL + '/api/webhooks/razorpay',
+  webhookUrl: (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay',
   
   // Razorpay credentials
   keyId: process.env.RAZORPAY_KEY_ID,
@@ -74,7 +74,7 @@ export function validateConfig(): { isValid: boolean; missingVars: string[] } {
 
 // Get webhook URL for Razorpay dashboard configuration
 export function getWebhookUrl(): string {
-  return razorpayConfig.webhookUrl;
+  return (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay';
 }
 
 // Get supported events for Razorpay webhook configuration

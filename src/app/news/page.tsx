@@ -24,6 +24,30 @@ export const metadata: Metadata = {
 
 const newsArticles = [
   {
+    id: "india-biometric-authentication-digital-payments-october-8",
+    title: "India Rolls Out Biometric Authentication for Digital Payments from October 8",
+    excerpt: "India launches facial recognition and fingerprint authentication for UPI payments using Aadhaar biometric data. Revolutionary digital payment security upgrade starts October 8, 2025.",
+    author: "Dhruv Marathe",
+    date: "2025-10-08",
+    readTime: "4 min read",
+    category: "Technology",
+    trending: true,
+    image: "https://www.reuters.com/resizer/v2/JBF53BNVCJPTXDG3QMZUGQFBLA.jpg?auth=4969615f64e2df5b0e41a9f9116006d9a96ba083930dfbeed134246b61b39fed&width=720&quality=80",
+    slug: "india-biometric-authentication-digital-payments-october-8"
+  },
+  {
+    id: "anthropic-opens-india-office-2026-ai-demand",
+    title: "Anthropic Opens First India Office in 2026: AI Revolution Hits Bangalore",
+    excerpt: "Anthropic, backed by Google & Amazon, opens first India office in Bangalore 2026. Claude AI's second-largest market gets local presence as AI adoption accelerates in India.",
+    author: "Dhruv Marathe",
+    date: "2025-10-08",
+    readTime: "5 min read",
+    category: "Technology",
+    trending: true,
+    image: "https://www.reuters.com/resizer/v2/CMSKOL23QNOPHGRRIHRKO7M64M.jpg?auth=f1a7da247178201155d677e4d4fbe819496a01c056cfed1015c3896166b775f6&width=720&quality=80",
+    slug: "anthropic-opens-india-office-2026-ai-demand"
+  },
+  {
     id: "bitcoin-surges-record-125559-october-5",
     title: "Bitcoin Surges to Record $125,559 High on October 5",
     excerpt: "Bitcoin achieved a new all-time high of $125,559 on October 5, 2025, boosting its market capitalization above $2.5 trillion and the total cryptocurrency market to $4.35 trillion.",

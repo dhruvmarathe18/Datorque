@@ -30,7 +30,7 @@ export async function GET() {
       data: {
         configuration: {
           isValid: true,
-          webhookUrl: process.env.NEXT_PUBLIC_BASE_URL + '/api/webhooks/razorpay',
+          webhookUrl: (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.datorque.com') + '/api/webhooks/razorpay',
           supportedEvents: [
             'subscription.activated',
             'subscription.charged',
