@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://datorque.com/</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://datorque.com/og-image.jpg</image:loc>
+      <image:title>DatorQue - Premium Website Development for Indian Businesses</image:title>
+      <image:caption>Build faster, convert higher. DatorQue creates premium websites for Indian brands—speedy, SEO-solid, and designed to sell.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://datorque.com/about</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Services Page -->
+  <url>
+    <loc>https://datorque.com/services</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Portfolio Page -->
+  <url>
+    <loc>https://datorque.com/portfolio</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/techstartup-preview.jpg</image:loc>
+      <image:title>Bangalore Real Estate Co - SaaS Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/fashion-preview.jpg</image:loc>
+      <image:title>Revive - The Elite Fitness - eCommerce</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/healthcare-preview.jpg</image:loc>
+      <image:title>Dubai Beauty School - Healthcare Portal</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/education-preview.jpg</image:loc>
+      <image:title>Oakridge International School - Education Platform</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/restaurant-preview.jpg</image:loc>
+      <image:title>The Table - Restaurant Booking System</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://datorque.com/portfolio/fintech-preview.jpg</image:loc>
+      <image:title>Planet Entertainment - Events Platform</image:title>
+    </image:image>
+  </url>
+
+  <!-- Pricing Page -->
+  <url>
+    <loc>https://datorque.com/pricing</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://datorque.com/contact</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Sales Page -->
+  <url>
+    <loc>https://datorque.com/sales</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Webinar Page -->
+  <url>
+    <loc>https://datorque.com/webinar</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Dhruv Marathe Profile Page -->
+  <url>
+    <loc>https://datorque.com/dhruvmarathe</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://datorque.com/dhruv-marathe-profile.jpeg</image:loc>
+      <image:title>Dhruv Marathe - Entrepreneur, Founder of DatorQue &amp; Public Speaker</image:title>
+      <image:caption>Dhruv Marathe - Entrepreneur, Public Speaker, and Founder of DatorQue. Expert in AI, web development, and digital transformation.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Admin Page (if publicly accessible) -->
+  <url>
+    <loc>https://datorque.com/admin</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Test API Page -->
+  <url>
+    <loc>https://datorque.com/test-api</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- News Section -->
+  <url>
+    <loc>https://datorque.com/news</loc>
+    <lastmod>2024-12-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- India Biometric Authentication Article -->
+  <url>
+    <loc>https://datorque.com/news/india-biometric-authentication-digital-payments-october-8</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.reuters.com/resizer/v2/JBF53BNVCJPTXDG3QMZUGQFBLA.jpg?auth=4969615f64e2df5b0e41a9f9116006d9a96ba083930dfbeed134246b61b39fed&amp;width=720&amp;quality=80</image:loc>
+      <image:title>Paytm QR Code - India Biometric Authentication for Digital Payments</image:title>
+      <image:caption>India launches facial recognition and fingerprint authentication for UPI payments using Aadhaar biometric data starting October 8, 2025.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Anthropic India Office Article -->
+  <url>
+    <loc>https://datorque.com/news/anthropic-opens-india-office-2026-ai-demand</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.reuters.com/resizer/v2/CMSKOL23QNOPHGRRIHRKO7M64M.jpg?auth=f1a7da247178201155d677e4d4fbe819496a01c056cfed1015c3896166b775f6&amp;width=720&amp;quality=80</image:loc>
+      <image:title>Anthropic Logo - AI Startup Opening India Office in 2026</image:title>
+      <image:caption>Anthropic, backed by Google &amp; Amazon, opens first India office in Bangalore 2026. Claude AI's second-largest market gets local presence.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Bitcoin Surge Article -->
+  <url>
+    <loc>https://datorque.com/news/bitcoin-surges-record-125559-october-5</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://pbs.twimg.com/media/G2e8RnQXUAATLr1?format=png&amp;name=small</image:loc>
+      <image:title>Bitcoin Price Chart - New All-Time High $125,559</image:title>
+      <image:caption>Bitcoin achieves new all-time high of $125,559 on October 5, 2025, boosting market cap above $2.5 trillion.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Kantara Chapter 1 Article -->
+  <url>
+    <loc>https://datorque.com/news/kantara-chapter-1-grosses-235-crore-worldwide</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://pbs.twimg.com/media/G2flY3qbsAAtP2v?format=jpg&amp;name=large</image:loc>
+      <image:title>Kantara Chapter 1 - Rishab Shetty's Blockbuster Film</image:title>
+      <image:caption>Rishab Shetty's Kantara Chapter 1 grosses Rs 235 crore worldwide in just three days, breaking box office records.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- India Women Cricket Article -->
+  <url>
+    <loc>https://datorque.com/news/india-women-crush-pakistan-88-runs-world-cup</loc>
+    <lastmod>2025-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://pbs.twimg.com/media/G2fuYoaW0AAEhQR?format=jpg&amp;name=medium</image:loc>
+      <image:title>India Women vs Pakistan Women Cricket Match - ICC Women's World Cup 2025</image:title>
+      <image:caption>India's women's cricket team defeats Pakistan by 88 runs in ICC Women's World Cup 2025 with Harmanpreet Kaur leading the victory.</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Elon Musk Netflix Article -->
+  <url>
+    <loc>https://datorque.com/news/elon-musk-netflix-boycott-transgender-themes</loc>
+    <lastmod>2025-10-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://datorque.com/news/elon-musk-netflix-og.jpg</image:loc>
+      <image:title>Elon Musk Netflix Boycott Campaign - $15B Market Value Lost</image:title>
+      <image:caption>Breaking news about Elon Musk's viral campaign against Netflix causing massive stock drop and controversy.</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
