@@ -1,6 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { ArrowRight, Mail, Globe, Users, Mic, Code, Brain, Award } from "lucide-react";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "Dhruv Marathe – Entrepreneur, Founder of DatorQue & Public Speaker",
@@ -19,12 +26,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Dhruv Marathe" }],
   creator: "Dhruv Marathe",
   publisher: "DatorQue",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   formatDetection: {
     email: false,
     address: false,
