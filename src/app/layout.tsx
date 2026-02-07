@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { PopupWrapper } from "@/components/ui/popup-wrapper";
@@ -13,6 +13,13 @@ const inter = Inter({
   display: "swap",
   preload: true,
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: "DatorQue - Premium Website Development for Indian Businesses",
@@ -30,12 +37,6 @@ export const metadata: Metadata = {
   authors: [{ name: "DatorQue Team" }],
   creator: "DatorQue",
   publisher: "DatorQue",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-  },
   formatDetection: {
     email: false,
     address: false,
